@@ -11,47 +11,23 @@
 <script type="text/javascript">
   SyntaxHighlighter.all();
 </script> 
-<title>index</title>
+<title>MySQL</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 
-<h1 id="toc_1">VeryCB's Wiki</h1>
+<h1 id="toc_1">All about MySQL</h1>
 
-<h2 id="toc_1.1">Programming</h2>
-<ul>
-<li>
-<a href="HTML.html">HTML</a>
-
-<li>
-<a href="CSS.html">CSS</a>
-
-<li>
-<a href="JavaScript.html">JavaScript</a> \ <a href="CoffeeScript.html">CoffeeScript</a> \ <a href="jQuery.html">jQuery</a> \ <a href="Backbone.js.html">Backbone.js</a>
-
-<li>
-<a href="Python.html">Python</a> \ <a href="Django.html">Django</a> \ <a href="Flask.html">Flask</a>
-
-<li>
-<a href="Ruby.html">Ruby</a>
-
-<li>
-<a href="Shell.html">Shell</a>
-
-</ul>
-
-<h2 id="toc_1.2">Database</h2>
-<ul>
-<li>
-<a href="MySQL.html">MySQL</a>
-
-<li>
-<a href="PostgreSQL.html">PostgreSQL</a>
-
-<li>
-<a href="MongoDB.html">MongoDB</a>
-
-</ul>
+<p>
+SHOW DATABASES;
+CREATE DATABASE database_name;
+USE database_name;
+SHOW TABLES;
+</p>
+<pre class="brush: shell">
+mysqldump -u username -p database_name &gt; backup.sql
+mysql -u username -p new_database_name &lt; backup.sql
+</pre>
 
 </body>
 </html>

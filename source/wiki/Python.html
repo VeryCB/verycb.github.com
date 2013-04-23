@@ -246,13 +246,23 @@ with open('test.txt', 'r') as f:
     read_data = f.read()
 </pre>
 
-<h2 id="toc_1.9">创建目录</h2>
+<h2 id="toc_1.9">标准库</h2>
 <pre class="brush: py">
 import os
-os.mkdir('test') #创建名为“test”的目录
-os.mkdir('test/test2') #创建多级目录
-os.path.isfile('test.txt') #判断文件“test.txt”是否存在
-os.path.exists('test/test') #判断目录“test/test”是否存在
+os.mkdir('test') # 创建名为“test”的目录
+os.mkdir('test/test2') # 创建多级目录
+os.path.isfile('test.txt') # 判断文件“test.txt”是否存在
+os.path.exists('test/test') # 判断目录“test/test”是否存在
+os.getcwd() # 返回当前目录
+os.chdir('/test/test1') # 切换目录
+os.system('mkdir test') # 执行shell command 'mkdir test'
+
+import shutil
+shutil.copyfile('data.db', 'archive.db') # 拷贝文件
+shutil.move('/build/executables', 'installdir') # 移动目录
+
+import sys
+sys.exit() # 终止程序运行最直接的方法
 </pre>
 
 </body>
