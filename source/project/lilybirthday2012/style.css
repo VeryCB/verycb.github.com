@@ -1,9 +1,0 @@
-ul {
-    border-bottom: 1px solid #000;
-    padding:10px;
-}
-ul li a {
-    display:block;
-    min-width:100px;
-    min-height:20px;
-}
