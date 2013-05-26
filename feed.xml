@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>Felix Felicis</title>
-    <link href="http://lab.lepture.com/liquidluck/feed.xml" rel="self" />
-    <link href="http://lab.lepture.com/liquidluck/" />
+    <title>VeryCB</title>
+    <link href="http://verycb.me/feed.xml" rel="self" />
+    <link href="http://verycb.me/" />
     <updated>2013-05-26T12:40:17+08:00</updated>
-    <id>http://lab.lepture.com/liquidluck/</id>
+    <id>http://verycb.me/</id>
     <entry>
         <title type="html"><![CDATA[Hello world]]></title>
-        <author><name>nickname</name></author>
-        <link href="http://lab.lepture.com/liquidluck/2012/hello-world.html"/>
+        <author><name>VeryCB</name></author>
+        <link href="http://verycb.me/2012/12/12/hello-world.html"/>
         <published>2012-12-12T00:00:00+08:00</published>
         <updated>2013-05-26T12:40:17+08:00</updated>
-        <id>http://lab.lepture.com/liquidluck/2012/hello-world.html</id>
-        <category scheme="http://lab.lepture.com/liquidluck/tag/test/" term="test" label="test" />
-        <content type="html" xml:base="http://lab.lepture.com/liquidluck/" xml:lang="en">
+        <id>http://verycb.me/2012/12/12/hello-world.html</id>
+        <category scheme="http://verycb.me/tag/test/" term="test" label="test" />
+        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
             <![CDATA[ <p>ASDASD</p>
 ]]>
         </content>
