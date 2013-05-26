@@ -1,0 +1,3 @@
+[submodule "love"]
+	path = love
+	url = https://github.com/VeryCB/love-gifts.git
