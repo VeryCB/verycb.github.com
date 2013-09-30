@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>PostgreSQL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">All about PostgreSQL</h1>
+
+<h2 id="toc_1.1">安装</h2>
+<p>
+Ubuntu:
+</p>
+<pre class="brush: shell">
+$ apt-get install postgresql
+</pre>
+<p>
+这样就安装好 PostgreSQL 了，该安装将自动创建一个缺省的数据库集群 “main”，并生成一个数据库超级用户 postgres ，密码为空，它即是操作系统用户(不可登录)，也是数据库用户(可登录) ，可以使用以下命令修改它的密码（为了数据安全，一定要修改密码）：
+</p>
+<pre class="brush: shell">
+$ sudo passwd postgres
+</pre>
+
+<h2 id="toc_1.2">登陆</h2>
+<pre class="brush: shell">
+$ sudo su postgres #切换到 postgres 用户
+$ psql postgres # 登录 postgres 数据库
+</pre>
+
+<h2 id="toc_1.3">创建用户</h2>
+<pre class="brush: shell">
+$ createuser -drSP sa #创建一个可以新建用户和数据库，不是超级用户的用户sa
+</pre>
+
+<h2 id="toc_1.4">创建数据库</h2>
+<pre class="brush: shell">
+$ createdb -O sa mydb # 新建一个属于 sa 的数据库 mydb
+</pre>
+
+</body>
+</html>

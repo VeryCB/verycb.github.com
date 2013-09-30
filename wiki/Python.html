@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Python</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">All about Python</h1>
+
+<h2 id="toc_1.1">基础</h2>
+<pre class="brush: py">
+x = y = z = 0 #可以这么同时给x, y, z赋值...
+hello = r"This is a raw string" #"raw" string，不会进行转义
+a = 'te''st' #两个相邻的literal string会自己链接，相当于'te'+'st', 于是乎a就是'test'了...但仅限于literals
+a*5 #相当于a+a+a+a+a == 'testtesttesttesttest'
+a[x:y:z] #x:起点，y:终点，z:步长
+a[::-1] #a被倒序
+</pre>
+
+<h2 id="toc_1.2">字符串</h2>
+<pre class="brush: py">
+a = 'abcde'
+a.rjust(6) # 输出' abcde'，如 a 长度小于6，则向右移动字符串（用空字符填充）使 a 长度等于6，如 a 长度大于或等于6，则返回 a 本身
+a.ljust(6) # 输出'abcde '，原理同上，只不过是向左移动了
+a.center(7) # 输出' abcde ' 原理同上，只不过是居中了
+a.zfill(6) # 输出'0abcde', 原理同上，只不过用0来填充
+
+# str.format 返回格式化字符串（取代了 % 成为 Python 3的标准）
+# 以下4行都输出同样的结果
+print 'This is {} and {}'.format('calvin', 'lily')
+print 'This is {0} and {1}'.format('calvin', 'lily')
+print 'This is {1} and {0}'.format('lily', 'calvin')
+print 'This is {calvin} and {lily}'.format(lily='lily', calvin='calvin')
+
+import math
+print 'The value of PI is approximately {0:.3f}.'.format(math.pi) # 用:提供更强大的控制，只输出到小数点后3位
+
+table = {'calvin': 150, 'lily': 90}
+print 'Calvin is {0[calvin]:d} and Lily is {0[lily]:d}.'.format(table) # 用[]可以获取字典类型 key 的 value
+print 'Calvin is {calvin:d} and Lily is {lily:d}.'.format(**table) # 用**可以把字典当作关键字参数
+</pre>
+
+<h2 id="toc_1.3">旧格式化字符串</h2>
+<table>
+<tr>
+<td>
+%d
+</td>
+<td>
+十进制整数
+</td>
+</tr>
+<tr>
+<td>
+%o
+</td>
+<td>
+八进制整数
+</td>
+</tr>
+<tr>
+<td>
+%x
+</td>
+<td>
+十六进制数（小写）
+</td>
+</tr>
+<tr>
+<td>
+%X
+</td>
+<td>
+十六进制数（大写）
+</td>
+</tr>
+<tr>
+<td>
+%f
+</td>
+<td>
+十进制浮点数
+</td>
+</tr>
+<tr>
+<td>
+%c
+</td>
+<td>
+单个字符
+</td>
+</tr>
+<tr>
+<td>
+%s
+</td>
+<td>
+字符串
+</td>
+</tr>
+</table>
+
+<p>
+注：在Python 3中已被 str.format() 取代
+</p>
+
+<h2 id="toc_1.4">循环</h2>
+<pre class="brush: py">
+a = ['test', 'test2', 'test3']
+for x in a:
+    print x
+</pre>
+<p>
+a在循环过程中不能被修改，要想修改a的话，循环请使用a的拷贝a[:]
+</p>
+<pre class="brush: py">
+a = ['test', 'test2', 'test3']
+for x in a[:]:
+    a[0] = 'test0'
+</pre>
+<p>
+不仅if可以与else搭配，for和while也可以哦~
+</p>
+<pre class="brush: py">
+for x in a:
+    print x
+else:
+    print 'done' #当a循环完了之后就执行else...
+
+a = 0
+while a=1:
+    a += 1
+else:
+    print a #当while后面的条件值为False的时候才执行else...
+</pre>
+<p>
+用来充数的pass...
+</p>
+<pre class="brush: py">
+while True:
+    pass #啥也不干，但语法要求这里不能空着...然后就有了pass...然后就一直循环...
+</pre>
+<p>
+当循环一个序列时，用 enumerate() 可以同时得到元素的位置和值
+</p>
+<pre class="brush: py">
+for i, v in enumerate(['tic', 'tac', 'toe']):
+    print i, v
+# 输出：
+# 0 tic
+# 1 tac
+# 2 toe
+</pre>
+<p>
+用 zip() 可以同时循环多个列表
+</p>
+<pre class="brush: py">
+list1 = [1, 2, 3]
+list2 = ['a', 'b', 'c']
+list3 = ['一', '二']
+for i, j, k in zip(list1, list2, list3):
+    print i, j, k
+# 输出(list3中没有第三个元素所以只循环两次):
+# 1 a 一
+# 2 b 二
+</pre>
+<p>
+反向循环
+</p>
+<pre class="brush: py">
+for i in reversed(xrange(1,10,2)):
+    print i
+# 输出:
+# 9
+# 7
+# 5
+# 3
+# 1
+</pre>
+<p>
+当循环一个字典时，用 iteritems() 可以得到 key 和 value 的值
+</p>
+<pre class="brush: py">
+a = {'a': 1, 'b':2, 'c':3}
+for key, value in a.iteritems():
+    print key, value
+# 输出（字典是无序的）:
+# a 1
+# c 3
+# b 2
+</pre>
+
+<h2 id="toc_1.5">函数</h2>
+<p>
+函数的第一个statement可以是一个string literal，用来作文档...
+</p>
+<pre class="brush: py">
+def fib(n):
+    """explain what the function does"""
+</pre>
+
+<h2 id="toc_1.6">集合</h2>
+<pre class="brush: py">
+a = ['test', 'test2']
+b = ['test2', 'test3']
+set(a) - set(b) #在集合a但不在集合b中的，输出：set(['test'])
+set(a) &amp; set(b) #a交b，输出：set(['test2'])
+set(a) | set(b) #a并b，输出：set(['test', 'test3', 'test2'])
+set(a) ^ set(b) #在集合a或在集合b中，但不在a交b中，输出：set(['test', 'test3'])
+</pre>
+
+<h2 id="toc_1.7">模块</h2>
+<pre class="brush: py">
+from fibo import * # 导入 fibo 内的除以"_"开头的所有名字
+
+dir(fibo) # list the names defined in fibo
+</pre>
+
+<h2 id="toc_1.8">文件</h2>
+<p>
+open(filename, mode) 返回一个文件对象，mode 可以为'r'(只读模式)、'w'(只写模式)、'a'(添加模式，写入的数据自动添加到文件最后)、'r+'(读写模式)。
+</p>
+<pre class="brush: py">
+f = open('test.txt', 'r+')
+f.read() # 返回所有内容
+f.readline() # 按行返回内容，一次返回一行
+f.readlines() # 返回一个列表，每一个元素是 f 一行内容
+# write() 只能写字符串，不是字符串的需要转换成字符串再写入
+f.write('a') # 在文件开始处写入'a'，替换掉原文件相同位置的内容
+f.tell() # 返回对象在文件中的当前位置
+f.seek(offset, from_what) # 改变对象在文件中的位置，从from_what（可以是0(从文件头开始)、1(从当前位置开始)、2(为文件末开始)）开始移动 offset 个位置
+f.close()
+
+# 用 with 来处理文件对象，处理完后对象会自动关闭
+with open('test.txt', 'r') as f:
+    read_data = f.read()
+</pre>
+
+<h2 id="toc_1.9">标准库</h2>
+<pre class="brush: py">
+import os
+os.mkdir('test') # 创建名为“test”的目录
+os.mkdir('test/test2') # 创建多级目录
+os.path.isfile('test.txt') # 判断文件“test.txt”是否存在
+os.path.exists('test/test') # 判断目录“test/test”是否存在
+os.getcwd() # 返回当前目录
+os.chdir('/test/test1') # 切换目录
+os.system('mkdir test') # 执行shell command 'mkdir test'
+
+import shutil
+shutil.copyfile('data.db', 'archive.db') # 拷贝文件
+shutil.move('/build/executables', 'installdir') # 移动目录
+
+import sys
+sys.exit() # 终止程序运行最直接的方法
+</pre>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Git</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">All about git</h1>
+
+<h2 id="toc_1.1">Basic</h2>
+
+<p>
+create a new branch
+</p>
+<pre class="brush: shell">
+$ git branch &lt;name&gt; 
+</pre>
+
+<p>
+switch to the branch
+</p>
+<pre class="brush: shell">
+$ git checkout &lt;name&gt;
+</pre>
+
+<p>
+create a new branch and switch to it
+</p>
+<pre class="brush: shell">
+$ git checkout -b &lt;name&gt;
+</pre>
+
+<p>
+merge from branch &lt;name&gt; to current branch
+</p>
+<pre class="brush: shell">
+$ git merge &lt;name&gt;
+</pre>
+
+<p>
+remove branch
+</p>
+<pre class="brush: shell">
+$ git branch -d &lt;name&gt;
+</pre>
+
+<p>
+show unstaged differences since last commit
+</p>
+<pre class="brush: shell">
+$ git diff
+</pre>
+
+<p>
+add file to staging area
+</p>
+<pre class="brush: shell">
+$ git add &lt;filename&gt;
+</pre>
+
+<p>
+view staged differences
+</p>
+<pre class="brush: shell">
+$ git diff --staged
+</pre>
+
+<p>
+undo last commit, put changes into staging
+</p>
+<pre class="brush: shell">
+$ git reset --soft HEAD^
+</pre>
+
+<p>
+change the last commit
+</p>
+<pre class="brush: shell">
+$ git commit --amend -m 'New Message'
+</pre>
+
+<p>
+undo last commit and all changes
+</p>
+<pre class="brush: shell">
+$ git reset --hard HEAD^
+</pre>
+
+<p>
+undo last 2 commits and all changes
+</p>
+<pre class="brush: shell">
+$ git reset --hard HEAD^^
+</pre>
+
+<p>
+rename remote name
+</p>
+<pre class="brush: shell">
+$ git remote rename &lt;from&gt; &lt;to&gt;
+</pre>
+
+<p>
+change url for remote
+</p>
+<pre class="brush: shell">
+$ git remote set-url &lt;name&gt; &lt;url&gt;
+</pre>
+
+<p>
+list all remote branches
+</p>
+<pre class="brush: shell">
+$ git branch -r
+</pre>
+
+<p>
+remote show
+</p>
+<pre class="brush: shell">
+$ git remote show &lt;name&gt;
+</pre>
+
+<p>
+remove a remote branch
+</p>
+<pre class="brush: shell">
+$ git push &lt;name&gt; :&lt;branch&gt;
+</pre>
+
+<p>
+tags
+</p>
+<pre class="brush: shell">
+$ git tag # list all tags
+$ git checkout &lt;tag&gt;
+$ git tag -a &lt;tag&gt; -m 'tag message' # add a new tag
+$ git push --tags # push new tags
+</pre>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Node.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">All about Node.js</h1>
+
+<h2 id="toc_1.1">A simple start</h2>
+<pre class="brush: js">
+var http = require('http');
+
+http.createServer(function(request, response) {
+    var requestHeaders = {
+        'Content-Type': 'text/html'
+    };
+
+    response.writeHead(200, requestHeaders);
+    response.write('Hello, this is an example');
+    response.end();
+}).listen(8080);
+
+console.log('Listening on port 8080...');
+</pre>
+
+</body>
+</html>

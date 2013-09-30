@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Backbone.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">All about Backbone.js</h1>
+
+<h2 id="toc_1.1">Model</h2>
+<pre class="brush: js">
+// To create a model class
+var TodoItem = Backbone.Model.extend({});
+
+// To create a model instance
+var todoItem = new TodoItem(
+    {description: 'Pick up milk', status: 'incomplete', id: 1}
+);
+
+// To get an attribute
+todoItem.get('description');
+
+// To set an attribute
+todoItem.set({status: 'complete'});
+
+// RESTful style
+var TodoItem = Backbone.Model.extend({urlRoot: '/todos'});
+
+// fetch todo with id=1
+var todoItem = new TodoItem({id:1})
+todoItem.fetch(); // GET /todos/1
+
+// update the todo
+todoItem.set({description: 'Pick up cookies.'});
+todoItem.save(); // PUT /todos/1 with JSON params
+
+// create new todo
+var todoItem = new TodoItem();
+todoItem.set({description: 'Fill prescription.'});
+todoItem.save(); // POST /todos with JSON params
+todoItem.get('id') // 2
+
+// delete a todo
+todoItem.destroy(); // DELETE /todos/2
+
+// Get JSON from model
+todoItem.toJSON()
+</pre>
+
+<h2 id="toc_1.2">Model Event</h2>
+<pre class="brush: js">
+// To listen for an event on a model
+todoItem.on('event-name', function () {
+    alert('event-name happend!');
+});
+
+// Run the event
+todoItem.trigger('event-name');
+
+// To listen for changes
+var doThing = function () {
+    ...
+}
+todoItem.on('change', doThing);
+
+// event triggered on change
+todoItem.set({description: 'Fill prescription.'});
+
+// set without triggering event
+todoItem.set({description: 'Fill prescription.'}, {silent: true});
+
+// remove event listener
+todoItem.off('change', doThing);
+</pre>
+
+<h2 id="toc_1.3">Built-in model events</h2>
+<table>
+<tr>
+<td>
+change
+</td>
+<td>
+when an attribute is modified
+</td>
+</tr>
+<tr>
+<td>
+change:&lt;attr&gt;
+</td>
+<td>
+when &lt;attr&gt; is modified
+</td>
+</tr>
+<tr>
+<td>
+destroy
+</td>
+<td>
+When a model is destroyed
+</td>
+</tr>
+<tr>
+<td>
+sync
+</td>
+<td>
+Whenever successfully synced
+</td>
+</tr>
+<tr>
+<td>
+error
+</td>
+<td>
+When model save or validation fails
+</td>
+</tr>
+<tr>
+<td>
+all
+</td>
+<td>
+Any triggered event
+</td>
+</tr>
+</table>
+
+<h2 id="toc_1.4">View</h2>
+<pre class="brush: js">
+// To create a view class
+var TodoView = Backbone.View.extend({
+    render: function () {
+        var html = '&lt;h3&gt;' + this.model.get('description') + '&lt;/h3&gt;';
+        this.$el.html(html);
+    }
+});
+
+// To create a view instance
+var todoView = new TodoView({model: todoItem});
+
+todoView.render();
+console.log(todoView.el); // &lt;div&gt;&lt;h3&gt;Pick up milk&lt;/h3&gt;&lt;/div&gt;
+
+// define a view class with tag name
+var SimpleView = Backbone.View.extend({tagName: 'li'});
+var simple = new SimpleView();
+console.log(simpleView.el); // &lt;li&gt;&lt;/li&gt;
+
+// with id and class
+var TodoView = Backbone.View.extend({
+    tagName: 'article',
+    id: 'todo-view',
+    className: 'todo'
+});
+var todoView = new TodoView();
+console.log(todoView.el); // &lt;article id="todo-view" class="todo"&gt;&lt;/article&gt;
+
+// to use a jQuery method like $.html()
+todoView.$el.html();
+
+// to user a template
+var TodoView = Backbone.View.extend({
+    ...
+    template: _.template('&lt;h3&gt;&lt;%= description %&gt;&lt;/h3&gt;'),
+    render: function () {
+        var attributes = this.model.toJSON();
+        this.$el.html(this.template(attributes));
+    }
+});
+</pre>
+
+<h2 id="toc_1.5">View Event</h2>
+
+<pre class="brush: js">
+var TodoView = Backbone.View.extend({
+    events: {
+        'click h3': 'alertStatus' // '&lt;event&gt; &lt;selector&gt;': '&lt;method&gt;', the &lt;selector&gt; should be inside the $el, if &lt;selector&gt; is not specified, the &lt;method&gt; could be trigged by the &lt;event&gt; on any element inside $el
+    },
+
+    alertStatus: function (e) {
+        alert('Hey you clicked the h3!');
+    }
+});
+</pre>
+
+</body>
+</html>

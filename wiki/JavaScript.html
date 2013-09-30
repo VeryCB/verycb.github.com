@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>JavaScript</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">All about JavaScript</h1>
+
+<h2 id="toc_1.1">类型转换</h2>
+<pre class="brush: js">
+// 把字符串转换成整型，10表示的是“123”的进制
+parseInt("123", 10) // 123
+
+// 如果要转换二进制数，把10换成2
+parseInt("11", 2) // 3
+
+// 转换浮点数
+parseFloat("3.14") // 3.14
+
+// “+”号也可以
++ "42" // 42
+
+// 如果要转换的字符串不是数字，则返回“NaN”
+parseInt("hello", 10) // NaN
+
+// 判断是否为“NaN”
+isNaN(Nan) // true
+
+// 正负无穷
+1 / 0 // Infinity
+-1 / 0 // -Infinity
+
+// "+"与parseInt()、parseFloat()的区别
++ "10.2abc" // Nan
+parseInt("10.2abc" ,10) // 10
+parseFloat("10.2abc") // 10.2
+</pre>
+
+<h2 id="toc_1.2">String</h2>
+<pre class="brush: js">
+"hello".length // 5
+"hello".chatAt(0) // "h"
+"hello".substring(1,4) // "ell", 第2-4个字符
+"hello".slice(1,4) // 同上
+"hello".slice(-3) // "llo"，最后三个字符
+"hello".indexOf("l") // 2, 第一次出现"l"的位置
+"hello".lastIndexOf("l") // 3, 最后一次出现"l"的位置
+"hello".indexOf("l", 3) // 3, 在位置3及之后首次出现"l"的位置
+"hello, world".split(",") // ["hello", " world"]
+"hello world".replace("hello", "goodbye") // "goodbye, world"
+"hello".toUpperCase() // "HELLO"
+</pre>
+
+<h2 id="toc_1.3">falsy value</h2>
+<ul>
+<li>
+false
+
+<li>
+null
+
+<li>
+undefined
+
+<li>
+''
+
+<li>
+0
+
+<li>
+NaN
+
+</ul>
+
+<h2 id="toc_1.4">Object</h2>
+<pre class="brush: js">
+var flight = {
+    airline: "Oceanic",
+    number: 815,
+    departure: {
+        IATA: 'SYD',
+        time: '2004-09-22 14:55',
+        city: 'Sydney'
+    },
+    arrival: {
+        IATA: 'LAX',
+        time: '2004-09-23 10:42',
+        city: 'Los Angeles'
+    }
+};
+
+flight.airline; // "Oceanic"
+typeof flight.airline; // "string"
+
+flight.equipment; // "undefined"
+typeof flight.equipment; // "undefined"
+flight.equipment.model; // throw "TypeError"
+
+flight.hasOwnProperty('number'); // true
+flight.hasOwnProperty('constructor'); // false
+</pre>
+
+</body>
+</html>
