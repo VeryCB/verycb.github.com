@@ -13,7 +13,17 @@
     <!--[if lt IE 9]>
         <script type="text/javascript" src="/static/html5shiv.js?v=9a10c"></script>
         <![endif]-->
-    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-8510262-8']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
     
 <meta name="description" content="" />
 
@@ -50,13 +60,15 @@
 
     <footer id="footer">
       <div class="end"></div>
-      
+      <nav class="elsewhere">
+        <a href="http://www.douban.com/people/VeryCB">Douban</a><a href="https://github.com/VeryCB">GitHub</a><a href="https://twitter.com/VeryCB">Twitter</a>
+      </nav>
       <p class="copyright">
       <span class="software">
         Powered by <a href="http://lab.lepture.com/liquidluck/">Felix Felicis</a> 3.8,
       </span>
       <span class="theme">
-        Theme <a href="https://github.com/lepture/liquidluck-theme-moment" rel="nofollow">moment</a> 2.0 by <a href="http://lepture.com">Hsiaoming Yang</a>
+        Theme <a href="https://github.com/lepture/liquidluck-theme-moment" rel="nofollow">moment</a> 2.0 by <a href="http://lepture.com">Hsiaoming Yang</a>,
       </span>
       <span>
         Hosted on <a href="http://github.com">Github</a>
