@@ -1,21 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <title>VeryCB</title>
-    <link href="http://verycb.me/feed.xml" rel="self" />
-    <link href="http://verycb.me/" />
-    <updated>2013-10-01T13:04:19+08:00</updated>
-    <id>http://verycb.me/</id>
-    <entry>
-        <title type="html"><![CDATA[Clean Git Branch]]></title>
-        <author><name>VeryCB</name></author>
-        <link href="http://verycb.me/2013/10/01/clean-git-branch.html"/>
-        <published>2013-10-01T00:00:00+08:00</published>
-        <updated>2013-10-01T13:04:19+08:00</updated>
-        <id>http://verycb.me/2013/10/01/clean-git-branch.html</id>
-        <category scheme="http://verycb.me/tag/git/" term="git" label="git" />
-        <category scheme="http://verycb.me/tag/python/" term="python" label="python" />
-        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
-            <![CDATA[ <p>之前一直以一种“笨办法”来删 git 分支，比如要删本地分支，直接</p>
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Clean Git Branch - VeryCB</title>
+    <script>if (top !== self) top.location = self.location;</script>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/static/yue.css?v=7f42a" />
+    <link rel="stylesheet" href="/static/pygments.css?v=c6adc" />
+    <link rel="stylesheet" href="/static/style.css?v=e3dd7" />
+    
+    <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="VeryCB" />
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="/static/html5shiv.js?v=9a10c"></script>
+        <![endif]-->
+    
+    
+<link rel="canonical" href="/2013/10/01/clean-git-branch.html" />
+
+
+  </head>
+  <body>
+    <header id="header">
+      <div class="container">
+        <div id="brand"><a href="/">VeryCB</a></div>
+        <nav id="nav" role="navigation">
+          
+          <a href="/">Home</a>
+          <a href="/about.html">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <div id="main">
+      <div class="container yue"><div class="hentry">
+    <h1 class="entry-title">Clean Git Branch</h1>
+    <div class="entry-meta">
+        <time class="updated" datetime="2013-10-01T00:00:00+08:00" pubdate>
+            <a href="/2013/">2013-10-01</a>
+        </time>
+        <span class="author vcard">
+            by <span class="fn">VeryCB</span>
+        </span>
+    </div>
+    <div class="entry-content">
+        <p>之前一直以一种“笨办法”来删 git 分支，比如要删本地分支，直接</p>
 <div class="highlight"><pre>git branch -d &lt;branch&gt;
 </pre></div>
 <p>如果是 remote 分支，就</p>
@@ -86,19 +114,43 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">call</span><span class="p">(</span><span class="s">&#39;git branch -D </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">branch</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
-]]>
-        </content>
-    </entry><entry>
-        <title type="html"><![CDATA[Hello world]]></title>
-        <author><name>VeryCB</name></author>
-        <link href="http://verycb.me/2013/09/30/hello-world.html"/>
-        <published>2013-09-30T00:00:00+08:00</published>
-        <updated>2013-09-30T23:11:34+08:00</updated>
-        <id>http://verycb.me/2013/09/30/hello-world.html</id>
-        <category scheme="http://verycb.me/tag/hello/" term="hello" label="hello" />
-        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
-            <![CDATA[ <p>Hello, world!</p>
-]]>
-        </content>
-    </entry>
-</feed>
+
+    </div>
+
+    
+
+    <div class="entry-tags">
+        <a href="/tag/git/">git</a><a href="/tag/python/">python</a>
+    </div>
+
+    
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'verycb';
+        var disqus_title = 'Clean Git Branch';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    
+</div></div>
+    </div>
+
+    <footer id="footer">
+      <div class="end"></div>
+      
+      <p class="copyright">
+      <span class="software">
+        Powered by <a href="http://lab.lepture.com/liquidluck/">Felix Felicis</a> 3.8,
+      </span>
+      <span class="theme">
+        Theme <a href="https://github.com/lepture/liquidluck-theme-moment" rel="nofollow">moment</a> 2.0 by <a href="http://lepture.com">Hsiaoming Yang</a>
+      </span>
+      </p>
+    </footer>
+    <script type="text/javascript" src="/static/mobile.js?v=3b6df"></script>
+    
+  </body>
+</html>
