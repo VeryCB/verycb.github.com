@@ -3,14 +3,14 @@
     <title>VeryCB</title>
     <link href="http://verycb.me/feed.xml" rel="self" />
     <link href="http://verycb.me/" />
-    <updated>2013-10-01T14:28:15+08:00</updated>
+    <updated>2013-10-18T18:59:01+08:00</updated>
     <id>http://verycb.me/</id>
     <entry>
         <title type="html"><![CDATA[Clean Git Branch]]></title>
         <author><name>VeryCB</name></author>
         <link href="http://verycb.me/2013/10/01/clean-git-branch.html"/>
         <published>2013-10-01T00:00:00+08:00</published>
-        <updated>2013-10-01T13:04:19+08:00</updated>
+        <updated>2013-10-18T18:59:01+08:00</updated>
         <id>http://verycb.me/2013/10/01/clean-git-branch.html</id>
         <category scheme="http://verycb.me/tag/git/" term="git" label="git" />
         <category scheme="http://verycb.me/tag/python/" term="python" label="python" />
@@ -24,68 +24,9 @@
 <p>但随着项目越来越多，每个项目都可能需要随时在几个不同的 feature 或 bugfix 上切换，而且当一个 branch 用完之后很可能忘记立即删掉，这样导致的结果就是分支积攒的越来越多，删分支的时候就会耗费很多时间和精力（需要不停地重复上面两个命令）。</p>
 <p>后来就<a href="http://www.douban.com/people/VeryCB/status/1219353081/">在豆瓣上抱怨了一下</a>，然后<a href="http://houkanshan.github.io">@灭灭</a>就在回应里告诉了我<a href="https://github.com/ornicar/dotfiles/blob/master/scripts/git-branch-cleaner-remote">这个脚本</a>，可以很方便的删 remote 分支（同时还有<a href="https://github.com/ornicar/dotfiles/blob/master/scripts/git-branch-cleaner">一个脚本</a>用来删本地分支）。</p>
 <p>这个脚本用 subprocess 模块创建子进程，然后在子进程中调用 git 命令来拿到当前仓库所有的 remote 分支，并且将分支列表写入一个临时文件。你可以编辑这个临时文件，删掉你要删除的分支并保存。然后它会比较编辑之前和编辑之后的分支列表，得到的差集就是你要删除的分支，再调用 git 命令删除之。</p>
-<p>于是我就在这个脚本的基础上稍微改了一下，让它既能删 remote 分支，同时也不会放过本地分支。下面是我的版本，也放在 <a href="https://gist.github.com/VeryCB/6759219">Gist 上</a>了：</p>
-<div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
-<span class="c"># -*- coding: utf-8 -*-</span>
+<p>于是我就在这个脚本的基础上稍微改了一下，让它既能删 remote 分支，同时也不会放过本地分支。下面是我的版本，放在 <a href="https://gist.github.com/VeryCB/6759219">Gist 上</a>了：</p>
 
-<span class="c"># This script helps removing Git branches.</span>
-<span class="c"># Run it from a git repo dir. It will open the Git branches list</span>
-<span class="c"># in your favorite editor. Delete some branches from the list.</span>
-<span class="c"># Save and close the file. The script applies the changes to the repo.</span>
-
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span><span class="p">,</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getenv</span>
-<span class="kn">import</span> <span class="nn">re</span>
-
-<span class="c"># configure commands used in this script</span>
-<span class="n">editor_command</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s">&#39;EDITOR&#39;</span><span class="p">)</span>
-<span class="n">branch_command</span> <span class="o">=</span> <span class="s">&#39;git branch -a&#39;</span>
-<span class="n">mktemp_command</span> <span class="o">=</span> <span class="s">&#39;mktemp&#39;</span>
-
-<span class="c"># regex to check whether the branch is a remote branch</span>
-<span class="n">remote_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&#39;\/&#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">is_remote</span><span class="p">(</span><span class="n">branch</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">remote_re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">branch</span><span class="p">))</span>
-
-<span class="c"># takes &#39;git branch&#39; output and returns a set of branches</span>
-<span class="k">def</span> <span class="nf">branches_to_list</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="n">branches</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
-        <span class="n">branch</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39; .+&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">branch</span><span class="o">.</span><span class="n">lstrip</span><span class="p">());</span>
-        <span class="k">if</span> <span class="n">is_remote</span><span class="p">(</span><span class="n">branch</span><span class="p">):</span>
-            <span class="n">branch</span> <span class="o">=</span> <span class="n">branch</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;remotes/&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">branch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
-            <span class="n">branches</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">branch</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">branches</span>
-
-<span class="c"># create a temp file</span>
-<span class="n">tmp_file</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">mktemp_command</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">)</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
-
-<span class="c"># write git branches to the temp file</span>
-<span class="n">call</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> &gt; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">branch_command</span><span class="p">,</span> <span class="n">tmp_file</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="c"># get original branches</span>
-<span class="n">original_branches</span> <span class="o">=</span> <span class="n">branches_to_list</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">tmp_file</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-
-<span class="c"># edit the temp file with the editor command</span>
-<span class="n">call</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">editor_command</span><span class="p">,</span> <span class="n">tmp_file</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="c"># get new branches</span>
-<span class="n">new_branches</span> <span class="o">=</span> <span class="n">branches_to_list</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">tmp_file</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-
-<span class="c"># adding and renaming branches is not supported</span>
-<span class="k">if</span><span class="p">(</span><span class="n">new_branches</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">original_branches</span><span class="p">)):</span>
-    <span class="nb">exit</span><span class="p">(</span><span class="s">&#39;Aborting! Do not add or rename branches, just remove them.&#39;</span><span class="p">)</span>
-
-<span class="c"># remove branches with Git</span>
-<span class="k">for</span> <span class="n">branch</span> <span class="ow">in</span> <span class="n">original_branches</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">new_branches</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">is_remote</span><span class="p">(</span><span class="n">branch</span><span class="p">):</span>
-        <span class="n">pushable</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="s">&#39; :&#39;</span><span class="p">,</span> <span class="n">branch</span><span class="p">)</span>
-        <span class="n">call</span><span class="p">(</span><span class="s">&#39;git push </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">pushable</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">call</span><span class="p">(</span><span class="s">&#39;git branch -D </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">branch</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
+<script src="https://gist.github.com/VeryCB/6759219.js"></script>
 ]]>
         </content>
     </entry><entry>
