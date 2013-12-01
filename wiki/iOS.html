@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>iOS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">All about iOS Dev</h1>
+
+<pre>
+// output
+NSLog(@"Bin")
+
+// variable
+NSString *firstName = @"Bin";
+NSLog(firstName);
+
+// format string
+NSLog(@"Hello there, %@.", firstName);
+NSLog(@"%@ %@", firstName, firstName);
+
+// number
+NSNumber *age = @24;
+
+// output number
+NSLog(@"%@", age);
+
+// array, immutable
+NSArray *apps = @[@"AngryFowl", @"Lettertouch", @"Tweetrobot"];
+apps[0] // AngryFowl
+
+// dictionary
+NSDictionary *person = @{@"First Name": @"Bin"};
+person[@"First Name"] // Bin
+
+// sending message or calling method
+[objectName messageName];
+
+// NSNumber to NSUInteger
+NSUInteger ageInt = [age unsignedIntegerValue];
+NSLog(@"I am @lu years old", ageInt);
+
+// concatenate strings
+NSString *fullName = [firstName stringByAppendingString:lastName];
+
+// nest message
+NSString *fullName = [[firstName stringByAppendingString:@" "] stringByAppendingString:lastName];
+
+// stringWithFormat
+NSString *fullName [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+
+// copy strings
+NSString *copy = [NSString stringWithString:fullName];
+
+// There is a common pattern for creating an empty object, no matter what class you are using:
+NSString *emptyString = [[NSString alloc] init];
+NSArray *emptyArray = [[NSArray alloc] init];
+NSDictionary *emptyDictionary = [[NSDictionary alloc] init];
+// All classes respond to the alloc message, which allocates a place in memory to store the object. alloc returns an object that is unusable until init is sent to it.
+// But since creating an empty object isn’t that useful, most classes implement more specific init methods that you can send to the result of alloc to create objects with data, like the initWithString: message for creating a copy of a string:
+NSString *copy = [[NSString alloc] initWithString:otherString];
+</pre>
+
+</body>
+</html>
