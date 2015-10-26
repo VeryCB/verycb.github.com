@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Docker</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="toc_1">All about Docker</h1>
+
+<pre class="brush: shell">
+$ docker version
+$ docker search ubuntu  # search for ubuntu images
+$ docker pull name/repo  # download image
+
+$ docker run name/repo command  # run command in name/repo
+$ docker run caibin/ubuntu echo 'test'
+$ docker run caibin/ubuntu apt-get install ping  # install packages
+
+$ docker ps -l  # list process
+
+$ docker commit pid caibin/insist  # save new state to new image
+
+$ docker inspect image_id  # display info about image
+
+$ docker images  # show images on your host
+
+$ docker build -t insist - &lt; Dockerfile_insist
+</pre>
+
+
+<p>
+Dockerfile
+</p>
+<pre>
+# Memcached
+#
+# VERSION       2.2
+
+# use the ubuntu base image provided by dotCloud
+FROM ubuntu
+
+MAINTAINER Victor Coisne victor.coisne@dotcloud.com
+
+# make sure the package repository is up to date
+RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" &gt; /etc/apt/sources.list
+RUN apt-get update
+
+# install memcached
+RUN apt-get install -y memcached
+
+# Launch memcached when launching the container
+ENTRYPOINT ["memcached"]
+
+# run memcached as the daemon user
+USER daemon
+
+# expose memcached port
+EXPOSE 11211
+</pre>
+
+</body>
+</html>

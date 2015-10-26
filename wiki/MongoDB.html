@@ -9,7 +9,6 @@
 
 <h1 id="toc_1">All about MongoDB</h1>
 
-
 <h2 id="toc_1.1">Basic</h2>
 <p>
 db.createCollection('name')
@@ -31,6 +30,36 @@ while (cursor.hasNext()) {
         }
     });
 }
+</pre>
+
+
+<h2 id="toc_1.3">查找字段重复的document</h2>
+<p>
+check_duplicate_document.js
+</p>
+<pre class="brush: js">
+var m = function () {
+    emit(this.field, 1);
+}
+var r = function (key, values) {
+    return Array.sum(values);
+}
+res = db.collection.mapReduce(m, r, { out : "tmp_collection" });
+</pre>
+
+<pre class="brush: shell">
+mongo db check_duplicate_document.js
+</pre>
+
+<p>
+db.tmp_collection.find({value: {$gt: 1}})
+</p>
+
+
+<h2 id="toc_1.4">导入导出</h2>
+<pre class="brush: shell">
+mongoexport --host biz-mongo3 -u biz -p biz77net --port 13000 --db biz --collection eb_tuitui_data --out eb_tuitui_data.json
+mongoimport --host biz-mongo3 -u biz -p biz77net --port 13000 --db biz --collection eb_tuitui_data_local --file eb_tuitui_data_local.json
 </pre>
 
 </body>

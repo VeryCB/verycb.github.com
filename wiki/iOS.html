@@ -49,7 +49,7 @@ NSString *fullName = [firstName stringByAppendingString:lastName];
 NSString *fullName = [[firstName stringByAppendingString:@" "] stringByAppendingString:lastName];
 
 // stringWithFormat
-NSString *fullName [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+NSString *fullName = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 
 // copy strings
 NSString *copy = [NSString stringWithString:fullName];
@@ -61,6 +61,170 @@ NSDictionary *emptyDictionary = [[NSDictionary alloc] init];
 // All classes respond to the alloc message, which allocates a place in memory to store the object. alloc returns an object that is unusable until init is sent to it.
 // But since creating an empty object isn’t that useful, most classes implement more specific init methods that you can send to the result of alloc to create objects with data, like the initWithString: message for creating a copy of a string:
 NSString *copy = [[NSString alloc] initWithString:otherString];
+
+if () {
+...
+} else if {
+...
+} else {
+...
+}
+
+// equal string
+[aString isEqualToString:anotherString]  // yes
+
+// switch
+NSInterger day = getDayOfWeek();
+switch (day) {
+    case 1: {
+        NSLog(@"Monday");
+        break;
+    }
+    ...
+}
+
+// array enumeration
+NSArray *funnyWords = @[@"Schadenfreude", @"Portmanteau", @"Penultimate"];
+for (NSString *word in funnyWords) {
+  NSLog(@"%@ is a funny word", word);
+}
+
+// dictionary enumeration
+NSDictionary *funnyWords = @{
+  @"Schadenfreude": @"pleasure derived by someone from another person's misfortune.",
+  @"Portmanteau": @"consisting of or combining two or more separable aspects or qualities",
+  @"Penultimate": @"second to the last"
+};
+for (NSString *word in funnyWords){
+  NSString *definition = funnyWords[word];
+  NSLog(@"%@ is defined as %@", word, definition);
+}
+
+// block
+void (^logMessage)(void) = ^{
+  NSLog(@"Hello from inside the block");
+};
+
+// block with patameters
+void (^logCount)(NSArray *) = ^(NSArray *array){
+  NSLog(@"There are %lu objects in this array", [array count]);
+};
+logCount(@[@"Mr.", @"Higgie"]);
+logCount(@[@"Mr.", @"Jony", @"Ive", @"Higgie"]);
+
+// class inherits from NSObject, declared in TalkingIphone.h
+@interface TalkingIphone : NSObject
+@end
+
+// property
+@interface Person : NSObject
+@property NSString *firstName;
+@property NSString *lastName;
+@end
+
+// implementation, declared in TalkingIphone.m
+#import "TalkingIphone.h"
+@implementation TalkingIphone
+@end
+
+// using a property
+#import "TalkingIphone.h"
+TalkingIphone *talkingiPhone = [[TalkingIphone alloc] init];
+talkingiPhone.phoneName = @"VeryCB";
+NSLog(@"%@", talkingiPhone.phoneName);
+
+// readonly property
+
+@interface TalkingIphone : NSObject
+
+@property NSString *phoneName;
+@property NSString *modelNumber;
+@property (readonly) NSNumber *batteryLife;
+
+- (void) decreaseBatteryLife:(NSNumber *)arg;
+@end
+
+#import "TalkingIphone.h"
+
+- (void) decreaseBatteryLife:(NSNumber *)arg;
+{
+  _batteryLife = @([self.batteryLife intValue] - [arg intValue]);
+}
+
+// check if an object can response a message
+if([talkingiPhone respondsToSelector:@selector(copy:)]){
+  TalkingIphone *copy = [talkingiPhone copy];
+  [copy reportBatteryLife];
+}
+
+// screen resolution
+@property (strong, nonatomic) UIWindow *window;
+
+- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+{
+  CGRect viewRect = [[UIScreen mainScreen] bounds];
+  self.window = [[UIWindow alloc] initWithFrame:viewRect];
+
+  UIViewController *colorTouchVC = [[UIViewController alloc] init];
+
+  UIView *colorView = [[UIView alloc] initWithFrame:viewRect];
+  coloView.backgroundColor = [UIColor yellowColor];
+  colorTouchVC.view = colorView;
+
+  self.window.rootViewController = colorTouchVC;
+  [self.window makeKeyAndVisible];
+  NSLog(@"Screen is %f tall and %f wide", viewRect.size.height, viewRect.size.width);
+  return YES;
+}
+
+
+// subview
+- (void)viewDidLoad
+{
+  [super viewDidLoad];
+  self.view.backgroundColor = [UIColor yellowColor];
+
+  UIButton *firstButton = [UIBotton buttonWithType:UIButtonTypeRoundedRect];
+  firstButton.frame = CGRectMake(100, 100, 100, 44);  // x:100, y:100, width:100, height:44
+  [firstButton setTitle:@"Click me!" forState:UIControlStateNormal];
+
+  [self.view AddSubView:firstButton];
+}
+
+// UILabel
+UILabel *firstLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 200, 44)]
+firstLabel.backgroundColor = [UIColor clearColor];
+firstLabel.text = @"Hello, welcome to my app";
+[self.view addSubView:firstLabel];
+
+// property
+@property(weak, nonatomic) UIButton *greenButton
+
+
+// AFNetworking asynchronous JSON
+#import "UIImageView+AFNetworking.h"
+#import "AFJSONRequestOperation.h"
+
+UIImageView *profileImageView = [[UIImageView alloc] init];
+profileImageView.frame = CGRectMake(20, 20, 100, 114);
+
+UIImage *placeholder = [UIImage imageNamed: @"placeholder.jpg"];
+NSURL *imageURL = [NSURL URLWithString:@"http://tryios.codeschool.com/higgie_profile_image.png"];
+
+[profileImageView setImageWithURL:imageURL placeholderImage:placeholder];
+[self.view addSubview:profileImageView];
+
+NSURL *url = [[NSURL alloc] initWithString:@"http://tryios.codeschool.com/userProfile.json"];
+NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+
+AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                       NSLog(@"JSON is %@", JSON);
+                                     }
+                                     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                       NSLog(@"NSError: %@", error.localizedDescription);
+                                     }];
+[operation start];
 </pre>
 
 </body>
