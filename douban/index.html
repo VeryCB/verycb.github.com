@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>豆瓣广播</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="apple-touch-icon" href="douban.png">
     <script type="text/javascript">
-        if ('standalone' in navigator && !navigator.standalone && (/iphone|ipod|ipad/gi).test(navigator.platform) && (/Safari/i).test(navigator.appVersion)) {
-            window.document.getElementById('content').style.display = 'block';
-        } else {
-            window.document.getElementById('content').style.display = 'none';
-            window.location = 'douban://douban.com/status';
+        var detect = function () {
+            if ('standalone' in navigator && !navigator.standalone && (/iphone|ipod|ipad/gi).test(navigator.platform) && (/Safari/i).test(navigator.appVersion)) {
+                document.getElementById('content').innerHTML = 'Add this page to your home screen!';
+            } else {
+                window.location = 'douban://douban.com/status';
+            }
         }
     </script>
 </head>
-<body>
-    <p id="content">Add this page to your home screen!</p>
+<body onload="detect();">
+    <p id="content"></p>
 </body>
 </html>
