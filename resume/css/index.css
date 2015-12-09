@@ -1,0 +1,214 @@
+/*************************
+**********@global*********
+*************************/
+ 
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    width: 61.8%;
+    margin: 0 auto;
+    letter-spacing: 1px;
+    background: #fff;
+    color: #000;
+}
+header {
+    margin: 50px 0;
+}
+section {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+p {
+    margin: 20px 0;
+}
+h1 {
+    font-size: 3em;
+    font-weight: 300;
+}
+h2 {
+    font-size: 1.5em;
+    font-weight: 300;
+}
+a:link {
+    text-decoration: none;
+    color: #f00;
+}
+a:visited {
+    color: #903;
+}
+a:hover, a:focus, a:active {
+    border-bottom: 1px dashed #f00;
+}
+.hidden {
+    display: none;
+}
+
+/*************************
+**********@header*********
+*************************/
+
+header h1 {
+    margin-bottom: 10px;
+}
+header a:link, header a:visited {
+    color: #999;
+    font: 1em "PT Serif", "Georgia", "Helvetica Neue", Arial, sans-serif;
+    font-style: italic;
+    padding-left: 20px;
+    background: url(../images/mail.png) no-repeat 0 50%;
+}
+header a:hover, header a:focus, header a:active {
+    border-bottom: 1px dashed #999;
+}
+header ul {
+    list-style-type: none;
+}
+header ul li {
+    float: right;
+}
+header ul li a:link, header ul li a:visited  {
+    margin-right: 5px;
+    text-indent: -9999px;
+    display: block;
+    width: 16px;
+    height: 11px;
+    -moz-transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+    opacity: 0.3;
+    padding:  0;
+}
+header ul li a:hover, header ul li a:focus, header ul li a:active {
+    border: 0;
+    opacity: 1;
+}
+header ul li a.current {
+    opacity: 1;
+}
+#zh-cn {
+    background: url(../images/cn.png) no-repeat top right;
+}
+#en {
+    background: url(../images/gb.png) no-repeat top right;
+}
+
+/*************************
+**********@section********
+*************************/
+
+section img {
+    width: 150px;
+    height: 150px;
+    float: left;
+    padding: 5px;
+    border: 1px solid #eee;
+    -moz-box-shadow: 3px 3px 8px #ccc;
+    -webkit-box-shadow: 3px 3px 8px #ccc;
+    box-shadow: 3px 3px 8px #ccc;
+    margin: 0 20px 10px 0;
+}
+section span {
+    color: #f00;
+}
+a[href^='http://www.vim'] {
+    padding-right: 17px;
+    background: url(../images/vim.png) no-repeat top right;
+}
+a[href^='http://mou'] {
+    padding-right: 17px;
+    background: url(../images/mou.png) no-repeat top right;
+}
+a[href^='http://aquamacs'] {
+    padding-right: 17px;
+    background: url(../images/aquamacs.png) no-repeat top right;
+}
+a[href^='http://www.spotify'] {
+    padding-right: 17px;
+    background: url(../images/spotify.png) no-repeat top right;
+}
+a[href$='macosx/'] {
+    padding-right: 17px;
+    background: url(../images/MacOS.png) no-repeat top right;
+}
+a[href^='http://windows'] {
+    padding-right: 17px;
+    background: url(../images/Windows.png) no-repeat top right;
+}
+a[href$='terminal'] {
+    padding-right: 17px;
+    background: url(../images/terminal.png) no-repeat top right;
+}
+a[href^='http://www.douban'] {
+    padding-right: 17px;
+    background: url(../images/douban.png) no-repeat top right;
+}
+a[href^='http://web.stagram'] {
+    padding-right: 17px;
+    background: url(../images/instagram.png) no-repeat top right;
+}
+a[href$='blog/'] {
+    padding-right: 17px;
+    background: url(../images/octopress.png) no-repeat top right;
+}
+a[href^='http://jekyll'] {
+    padding-right: 17px;
+    background: url(../images/jekyll.png) no-repeat top right;
+}
+a[href^='http://octopress'] {
+    padding-right: 17px;
+    background: url(../images/octopress.png) no-repeat top right;
+}
+a[href^='https://github'] {
+    padding-right: 17px;
+    background: url(../images/github.png) no-repeat top right;
+}
+a[href^='http://t.verycb'] {
+    padding-right: 17px;
+    background: url(../images/tumblr.png) no-repeat top right;
+}
+a[href^='http://twitter'] {
+    padding-right: 17px;
+    background: url(../images/twitter.png) no-repeat top right;
+}
+a[href^='http://fanfou'] {
+    padding-right: 17px;
+    background: url(../images/fanfou.jpg) no-repeat top right;
+}
+a[href^='http://code.google'] {
+    padding-right: 17px;
+    background: url(../images/google_code.png) no-repeat top right;
+}
+section ul {
+    margin: 20px;
+}
+section ul li span {
+    float:right;
+    font-size: 0.7em;
+    background: #f00;
+    color: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-left: 3px;
+    padding: 0 5px;
+}
+section ul li {
+    margin-bottom: 10px;
+}
+
+/*************************
+**********@footer********
+*************************/
+
+footer {
+    color: #999;
+    width: 100%;
+    padding: 20px 0;
+    border-top: 1px solid #ccc;
+    text-align: right;
+}
