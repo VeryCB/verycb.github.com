@@ -36,7 +36,6 @@
         <nav id="nav" role="navigation">
           
           <a href="/">Home</a>
-          <a href="/wiki/">Wiki</a>
           <a href="/love/">Love gifts</a>
         </nav>
       </div>
@@ -55,10 +54,10 @@
     </div>
     <div class="entry-content">
         <p>之前一直以一种“笨办法”来删 git 分支，比如要删本地分支，直接</p>
-<div class="highlight"><pre>git branch -d &lt;branch&gt;
+<div class="highlight"><pre><span></span>git branch -d &lt;branch&gt;
 </pre></div>
 <p>如果是 remote 分支，就</p>
-<div class="highlight"><pre>git push &lt;remote&gt; :&lt;branch&gt;
+<div class="highlight"><pre><span></span>git push &lt;remote&gt; :&lt;branch&gt;
 </pre></div>
 <p>但随着项目越来越多，每个项目都可能需要随时在几个不同的 feature 或 bugfix 上切换，而且当一个 branch 用完之后很可能忘记立即删掉，这样导致的结果就是分支积攒的越来越多，删分支的时候就会耗费很多时间和精力（需要不停地重复上面两个命令）。</p>
 <p>后来就<a href="http://www.douban.com/people/VeryCB/status/1219353081/">在豆瓣上抱怨了一下</a>，然后<a href="http://houkanshan.github.io">@灭灭</a>就在回应里告诉了我<a href="https://github.com/ornicar/dotfiles/blob/master/scripts/git-branch-cleaner-remote">这个脚本</a>，可以很方便的删 remote 分支（同时还有<a href="https://github.com/ornicar/dotfiles/blob/master/scripts/git-branch-cleaner">一个脚本</a>用来删本地分支）。</p>
@@ -93,11 +92,11 @@
     <footer id="footer">
       <div class="end"></div>
       <nav class="elsewhere">
-        <a href="http://www.douban.com/people/VeryCB">Douban</a><a href="https://github.com/VeryCB">GitHub</a><a href="https://twitter.com/VeryCB">Twitter</a>
+        <a href="https://www.douban.com/people/VeryCB">Douban</a><a href="https://github.com/VeryCB">GitHub</a><a href="https://twitter.com/VeryCB">Twitter</a>
       </nav>
       <p class="copyright">
       <span class="software">
-        Powered by <a href="http://lab.lepture.com/liquidluck/">Felix Felicis</a> 3.8,
+        Powered by <a href="http://lab.lepture.com/liquidluck/">Felix Felicis</a> 3.8.1,
       </span>
       <span class="theme">
         Theme <a href="https://github.com/lepture/liquidluck-theme-moment" rel="nofollow">moment</a> 2.0 by <a href="http://lepture.com">Hsiaoming Yang</a>,

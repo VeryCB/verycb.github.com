@@ -3,9 +3,52 @@
     <title>VeryCB</title>
     <link href="http://verycb.me/feed.xml" rel="self" />
     <link href="http://verycb.me/" />
-    <updated>2013-10-18T18:59:01+08:00</updated>
+    <updated>2016-11-15T22:01:56+08:00</updated>
     <id>http://verycb.me/</id>
     <entry>
+        <title type="html"><![CDATA[聊聊远程工作——我们的团队与工作方式]]></title>
+        <author><name>VeryCB</name></author>
+        <link href="http://verycb.me/2016/11/14/remote-work-our-team.html"/>
+        <published>2016-11-14T00:00:00+08:00</published>
+        <updated>2016-11-15T22:01:56+08:00</updated>
+        <id>http://verycb.me/2016/11/14/remote-work-our-team.html</id>
+        <category scheme="http://verycb.me/tag/remote/" term="remote" label="remote" />
+        <category scheme="http://verycb.me/tag/treation/" term="treation" label="treation" />
+        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
+            <![CDATA[ <p>转眼间远程办公已经 4 个多月了，前段时间组织了一次远程工作者聚会，跟大家一起聊了聊。最大的感受是有越来越多的人开始对 remote 感兴趣了，但缺少足够多且有效的渠道和信息让他们了解这种『不同』的工作方式。</p>
+<p>之前我也看过和听过不少关于远程工作的经验分享，比如 37signals 写的<a href="https://book.douban.com/subject/21362627/">《Remote》</a>，Zapier 写的<a href="https://zapier.com/learn/the-ultimate-guide-to-remote-working/">《The Ultimate Guide to Remote Work》</a>等等，有的时候感觉他们的描述『太美好』，好像是为了推广远程工作而故意隐藏了一些阴暗面，有的时候又觉得有些担忧和批评过于严重。于是我打算分享一些我们团队和我自己在远程工作过程中的经历和感受，尽量做到不吹不黑。</p>
+<p>今天就先介绍一下我们团队以及我们的工作方式吧。</p>
+
+<h2 id="toc_0">团队</h2>
+<p>目前我们团队一共有 9 个人，其中有 7 位工程师（包括前后端和移动端），1  位产品经理和 1 个打杂的（对，就是 CEO），生活在 5 个不同的城市：北京、杭州、苏州、西安和大理。</p>
+<p><img src="http://ww1.sinaimg.cn/large/620603d0jw1f9t530u4r1j20go0a4756.jpg" alt="团队成员所在的城市分布"/></p>
+<p>每个人在加入这个团队之前都已经有较为丰富的工作经验了，因为对于一个新人来说，不仅要学习如何『远程』，更要学习如何『工作』，而我们作为创业团队，招聘一个新人需要付出的时间和试错成本都会比较高，有点不划算，所以我们希望团队里的每个人都很优秀，能够独当一面。而『远程』的方式恰恰在招聘方面有天然的优势，没有地域限制，不必担心优秀的人才因为类似换城市这样的原因流失掉。</p>
+
+<h2 id="toc_1">流程</h2>
+<p>整个产品的开发流程其实没有什么特别之处，应该跟其他大部分互联网产品都是类似的。</p>
+<p>我们用『Story』这个概念来定义要做的事情，一个 Story 可以是某个新功能，也可以是某个比较重要的性能优化，比如『数据导出功能』，『改进错误提醒体验』等等。然后把所有要做的 Story 都放在一个 Treation 的表格里管理，由产品经理跟大家讨论确定优先级，产出产品文档，如果需要设计就由设计师提前产出设计稿，然后工程师就开始开发了。</p>
+<p><img src="http://ww4.sinaimg.cn/large/620603d0jw1f9t53jh6d5j20go09ftac.jpg" alt="用 Treation 来管理所有的 Story"/></p>
+<p>除了『Story』表以外，我们还用了一张『Bug』表来管理所有的 bug，用 P1 - P4 来定义优先级，P1 的 bug 需要马上停下手头的事情进行修复上线。</p>
+<p>每周一上午我们会有一次全员的视频会议，已经开发完成和正在开发中的 Story 会进行 demo 演示，确保团队里的所有人都能知道产品的进展。</p>
+
+<h2 id="toc_2">沟通</h2>
+<p>有效的沟通非常重要，所以我们使用了很多工具来保证沟通的流畅性。</p>
+<p>日常工作沟通主要在 Slack 进行，但并不保证所有 Slack 里的信息都能被所有人及时看到和回复，所以我们有几个约定：</p>
+
+<ul>
+<li>如果不是需要立即回复的消息，尽量不要打扰其他人，直接发出来就好，其他人看到的时候再回复；</li>
+<li>如果是需要尽快回复的消息，直接 @ 当事人；</li>
+<li>每天晚上 8 点是团队讨论时间，如果有需要找别人沟通的事情放在这个时间点进行</li>
+</ul>
+<p>产品和技术方案的讨论主要是在 Treation 中进行，直接评论在 Story 的评论区中，同时 Treation 会跟 slack 联动，评论也会推到 Slack 里。</p>
+<p>需要语音或者视频讨论的问题，用 Zoom 开一个房间来讨论。</p>
+<p>每周一的例会除了演示 demo 以外，每个人还有一个短分享（参考自豆瓣的 firelab 分享会），也是一个互相沟通的好机会，通常大家都会分享最近看的书和电影、好玩的游戏、时间管理的方式，旅行的见闻，最近新出的技术等等。</p>
+<p>除了工具以外，还有一个隐性的要求是每个人都需要能够用文字表达清楚自己的观点和看法，因为远程工作中最主要的表达方式就是打字，如果用文字描述不清楚很容易让其他人产生误解或者不必要的成本。对于复杂的情况，如果文字很难说明白，我们会借助原型图、视频或者用 Zoom 分享屏幕的方式来沟通。</p>
+<p>另外我们每六个星期会一起去一座城市聚一下，边工作边玩。之前我们已经去了南京和成都，白天在咖啡馆或者联合办公空间工作，周末和晚上吃喝玩乐打德州。这让我们都能够更加进一步地了解彼此，产生更加私人的关系。</p>
+<p><img src="http://ww3.sinaimg.cn/large/620603d0jw1f9t53v6luqj20go0b4772.jpg" alt="团队相聚成都"/></p>
+]]>
+        </content>
+    </entry><entry>
         <title type="html"><![CDATA[Clean Git Branch]]></title>
         <author><name>VeryCB</name></author>
         <link href="http://verycb.me/2013/10/01/clean-git-branch.html"/>
@@ -16,10 +59,10 @@
         <category scheme="http://verycb.me/tag/python/" term="python" label="python" />
         <content type="html" xml:base="http://verycb.me/" xml:lang="en">
             <![CDATA[ <p>之前一直以一种“笨办法”来删 git 分支，比如要删本地分支，直接</p>
-<div class="highlight"><pre>git branch -d &lt;branch&gt;
+<div class="highlight"><pre><span></span>git branch -d &lt;branch&gt;
 </pre></div>
 <p>如果是 remote 分支，就</p>
-<div class="highlight"><pre>git push &lt;remote&gt; :&lt;branch&gt;
+<div class="highlight"><pre><span></span>git push &lt;remote&gt; :&lt;branch&gt;
 </pre></div>
 <p>但随着项目越来越多，每个项目都可能需要随时在几个不同的 feature 或 bugfix 上切换，而且当一个 branch 用完之后很可能忘记立即删掉，这样导致的结果就是分支积攒的越来越多，删分支的时候就会耗费很多时间和精力（需要不停地重复上面两个命令）。</p>
 <p>后来就<a href="http://www.douban.com/people/VeryCB/status/1219353081/">在豆瓣上抱怨了一下</a>，然后<a href="http://houkanshan.github.io">@灭灭</a>就在回应里告诉了我<a href="https://github.com/ornicar/dotfiles/blob/master/scripts/git-branch-cleaner-remote">这个脚本</a>，可以很方便的删 remote 分支（同时还有<a href="https://github.com/ornicar/dotfiles/blob/master/scripts/git-branch-cleaner">一个脚本</a>用来删本地分支）。</p>
