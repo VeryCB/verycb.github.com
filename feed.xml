@@ -3,9 +3,47 @@
     <title>VeryCB</title>
     <link href="http://verycb.me/feed.xml" rel="self" />
     <link href="http://verycb.me/" />
-    <updated>2017-06-26T22:05:37+08:00</updated>
+    <updated>2017-08-17T23:28:34+08:00</updated>
     <id>http://verycb.me/</id>
     <entry>
+        <title type="html"><![CDATA[东西杂记]]></title>
+        <author><name>VeryCB</name></author>
+        <link href="http://verycb.me/2017/08/10/goodbye-dongxi.html"/>
+        <published>2017-08-10T00:00:00+08:00</published>
+        <updated>2017-08-17T23:28:34+08:00</updated>
+        <id>http://verycb.me/2017/08/10/goodbye-dongxi.html</id>
+        <category scheme="http://verycb.me/tag/douban/" term="Douban" label="Douban" />
+        <category scheme="http://verycb.me/tag/dongxi/" term="Dongxi" label="Dongxi" />
+        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
+            <![CDATA[ <p>虽然早在一个月前就知道东西要关闭的消息，但看到这封豆邮的时候还是愣了一下，脑海中闪过许多画面，于是赶紧捕捉下来，怕时间一长就会忘记。</p>
+<p><img src="https://ws1.sinaimg.cn/mw690/620603d0ly1fin4qyfgxjj20xc0oggne.jpg" alt="豆瓣东西下线通知"/></p>
+
+<ol>
+<li><p>我是 13 年年初正式入职豆瓣的，刚好碰上东西立项，人手紧缺，所以我就直接被拉过去做这个产品了。我去的时候组里只有叔叔一位工程师，而且当时项目刚刚开始，还在做用户调研和需求分析，我们就每天去参与一下产品讨论头脑风暴之类的事情，写写脚本跑跑数据，然后逛逛淘宝。（虽然我不喜欢逛淘宝</p></li>
+<li><p>东西的运营后台算是正式开始做的第一个项目，我们用了魔兽世界里一座城市作为项目名 —— BootyBay。那个时候是我第一次接触 Flask 和 MongoDB，在烨总的指导下陆陆续续把运营妹子们需要的各种功能都加了进去。</p></li>
+<li><p>东西在 13 年 6 月份开始邀请测试，当时产品的名字还不叫『豆瓣东西』，而是『大家谈论的商品』，页面风格也比现在的要『冷谈』很多。</p>
+<p><img src="https://ws1.sinaimg.cn/large/620603d0ly1fin4silfkbj20xc0ghab7.jpg" alt="大家谈论的商品"/></p></li>
+<li><p>东西即将上线的时候公司组织了一次跳骚市场，主题是『仲月东西街』，然而组里的同事都在赶工，所以几乎都没参加。</p>
+<p><img src="https://ws1.sinaimg.cn/large/620603d0ly1fin4t2cxawj20xc0k20tn.jpg" alt="仲月东西街"/></p></li>
+<li><p>东西 13 年 9 月 17 号正式上线，记得当天我们加班到很晚，隔壁组的墨墨老师刚好也在加班，然后他发出了东西正式上线之后的第一个商品。</p></li>
+<li><p>13 年年底为了尾牙节目我们拍了一张全家福，也是唯一的一张全家福。</p></li>
+<li><p>13 年尾牙小黑模仿『万万没想到』拍了『致我们不提需求的青春』，拿了二等奖。</p>
+<p><img src="https://ws1.sinaimg.cn/large/620603d0ly1fin4u2nrrcj20xc0j0mxs.jpg" alt="致我们不提需求的青春"/></p></li>
+<li><p>东西在 14 年初拿了极客公园『中国最佳发展潜力产品』奖，当时大家都很高兴，后来这个奖杯由邢老师传给了猫猫，猫猫又传给了我，我又传给了逗号姐。</p>
+<p><img src="https://ws1.sinaimg.cn/large/620603d0ly1fin4upowwoj20xc0xcady.jpg" alt="极客公园『中国最佳发展潜力产品』"/></p></li>
+<li><p>14 年为了做移动端，大家都开始学移动开发，邢老师只用了一个周末就写了个 Android 初始版本，叔叔和 tony 更是直接转型去写 iOS 和 Android 了。</p></li>
+<li><p>最令我印象深刻的是组里的同事对代码质量的要求非常严格，每个 PR 如果有问题都必须要讨论清楚达成一致才会 merge，甚至还专门写了一个 Code Review 规范。这个习惯至今都让我受益匪浅。</p></li>
+<li><p>只要有同事离职，散伙饭必去管氏翅吧和张妈妈。</p></li>
+<li><p>14 年 TB 跟同事一起去青岛，晚上在海鲜市场买了生鲜到附近的居酒屋直接做了吃，为了几块钱砍价砍了半天。</p>
+<p><img src="https://ws1.sinaimg.cn/large/620603d0ly1fin4ve9s0hj20go0go42r.jpg" alt="青岛 TB"/></p></li>
+<li><p>15 年 9 月 17 号是东西上线两周年，我们买了个蛋糕关起门来庆祝了一下。</p>
+<p><img src="https://ws1.sinaimg.cn/large/620603d0ly1fin4w501d7j20go0gowhh.jpg" alt="东西上线两周年"/></p></li>
+<li><p>东西从上线到下线，logo 里一直有『Beta』字样，至于原因，已经无从考究了。</p></li>
+<li><p>再后来我就离开豆瓣了，走之前还有一个答应要给运营做的需求没做完，现在想想还有点遗憾。</p></li>
+</ol>
+]]>
+        </content>
+    </entry><entry>
         <title type="html"><![CDATA[我是如何抢到新西兰工作度假签证的]]></title>
         <author><name>VeryCB</name></author>
         <link href="http://verycb.me/2017/06/25/new-zealand-whv.html"/>
