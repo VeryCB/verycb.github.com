@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>VeryCB</title>
-    <link href="http://verycb.me/feed.xml" rel="self" />
-    <link href="http://verycb.me/" />
-    <updated>2017-12-31T21:31:46+08:00</updated>
-    <id>http://verycb.me/</id>
+    <link href="https://verycb.me/feed.xml" rel="self" />
+    <link href="https://verycb.me/" />
+    <updated>2018-01-01T02:31:46+08:00</updated>
+    <id>https://verycb.me/</id>
     <entry>
         <title type="html"><![CDATA[2017 过去了]]></title>
         <author><name>VeryCB</name></author>
-        <link href="http://verycb.me/2017/12/31/2017.html"/>
+        <link href="https://verycb.me/2017/12/31/2017.html"/>
         <published>2017-12-31T00:00:00+08:00</published>
-        <updated>2017-12-31T21:31:46+08:00</updated>
-        <id>http://verycb.me/2017/12/31/2017.html</id>
-        <category scheme="http://verycb.me/tag/2017/" term="2017" label="2017" />
-        <category scheme="http://verycb.me/tag/summary/" term="summary" label="summary" />
-        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
+        <updated>2018-01-01T02:31:46+08:00</updated>
+        <id>https://verycb.me/2017/12/31/2017.html</id>
+        <category scheme="https://verycb.me/tag/2017/" term="2017" label="2017" />
+        <category scheme="https://verycb.me/tag/summary/" term="summary" label="summary" />
+        <content type="html" xml:base="https://verycb.me/" xml:lang="en">
             <![CDATA[ <p>今年是第二次写年终总结，继续去年的流水账风格。</p>
 <p>1 月份 Treation 团队解散，第一次创业和远程工作的经历就此告一段落。然后开始专心陪媳妇待产，同时为出国做前期准备。每周去健身房游泳，能够一口气游 1000 米了。</p>
 <p>2 月份迎来了 Chloe 的诞生，正式升级当了爸爸。准备了一下简历，开始找新西兰的工作。虽然早就听说没有签证是很难拿到 offer 的，还是决定试一下。前前后后大概投了 30 几家公司，有一半石沉大海，剩下的一半也基本都以「没有合法工作签证」或者「本人不在新西兰」为由直接拒掉了，只有一家公司给了笔试机会，但最后也以『优先考虑本地人』为由让我继续等着。</p>
@@ -37,13 +37,13 @@
     </entry><entry>
         <title type="html"><![CDATA[东西杂记]]></title>
         <author><name>VeryCB</name></author>
-        <link href="http://verycb.me/2017/08/10/goodbye-dongxi.html"/>
+        <link href="https://verycb.me/2017/08/10/goodbye-dongxi.html"/>
         <published>2017-08-10T00:00:00+08:00</published>
-        <updated>2017-08-17T23:28:34+08:00</updated>
-        <id>http://verycb.me/2017/08/10/goodbye-dongxi.html</id>
-        <category scheme="http://verycb.me/tag/douban/" term="Douban" label="Douban" />
-        <category scheme="http://verycb.me/tag/dongxi/" term="Dongxi" label="Dongxi" />
-        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
+        <updated>2017-08-18T03:28:34+08:00</updated>
+        <id>https://verycb.me/2017/08/10/goodbye-dongxi.html</id>
+        <category scheme="https://verycb.me/tag/douban/" term="Douban" label="Douban" />
+        <category scheme="https://verycb.me/tag/dongxi/" term="Dongxi" label="Dongxi" />
+        <content type="html" xml:base="https://verycb.me/" xml:lang="en">
             <![CDATA[ <p>虽然早在一个月前就知道东西要关闭的消息，但看到这封豆邮的时候还是愣了一下，脑海中闪过许多画面，于是赶紧捕捉下来，怕时间一长就会忘记。</p>
 <p><img src="https://ws1.sinaimg.cn/mw690/620603d0ly1fin4qyfgxjj20xc0oggne.jpg" alt="豆瓣东西下线通知"/></p>
 
@@ -75,13 +75,13 @@
     </entry><entry>
         <title type="html"><![CDATA[我是如何抢到新西兰工作度假签证的]]></title>
         <author><name>VeryCB</name></author>
-        <link href="http://verycb.me/2017/06/25/new-zealand-whv.html"/>
+        <link href="https://verycb.me/2017/06/25/new-zealand-whv.html"/>
         <published>2017-06-25T00:00:00+08:00</published>
-        <updated>2017-06-26T22:05:37+08:00</updated>
-        <id>http://verycb.me/2017/06/25/new-zealand-whv.html</id>
-        <category scheme="http://verycb.me/tag/whv/" term="whv" label="whv" />
-        <category scheme="http://verycb.me/tag/immigration/" term="immigration" label="immigration" />
-        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
+        <updated>2017-06-27T02:05:37+08:00</updated>
+        <id>https://verycb.me/2017/06/25/new-zealand-whv.html</id>
+        <category scheme="https://verycb.me/tag/whv/" term="whv" label="whv" />
+        <category scheme="https://verycb.me/tag/immigration/" term="immigration" label="immigration" />
+        <content type="html" xml:base="https://verycb.me/" xml:lang="en">
             <![CDATA[ <p>从去年年底开始准备移民新西兰，到现在终于有了实质性的进展：成功抢到了工作度假签证（Working Holiday Visa，简称 WHV），算是迈出了第一步，所以写篇日记来记录一下。</p>
 
 <h2 id="toc_0">前期准备</h2>
@@ -125,13 +125,13 @@
     </entry><entry>
         <title type="html"><![CDATA[2016 过去了]]></title>
         <author><name>VeryCB</name></author>
-        <link href="http://verycb.me/2017/01/01/2016.html"/>
+        <link href="https://verycb.me/2017/01/01/2016.html"/>
         <published>2017-01-01T00:00:00+08:00</published>
-        <updated>2017-01-01T22:29:32+08:00</updated>
-        <id>http://verycb.me/2017/01/01/2016.html</id>
-        <category scheme="http://verycb.me/tag/2016/" term="2016" label="2016" />
-        <category scheme="http://verycb.me/tag/summary/" term="summary" label="summary" />
-        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
+        <updated>2017-01-02T03:29:32+08:00</updated>
+        <id>https://verycb.me/2017/01/01/2016.html</id>
+        <category scheme="https://verycb.me/tag/2016/" term="2016" label="2016" />
+        <category scheme="https://verycb.me/tag/summary/" term="summary" label="summary" />
+        <content type="html" xml:base="https://verycb.me/" xml:lang="en">
             <![CDATA[ <p>2016 是我来北京的第 4 年，也是工作生活变化比较大的一年，虽然以前从来没写过年终总结，但觉得还是应该记录一下过去的这一年。</p>
 <p>年初搬了新家，正式结束了 6 年的租房生涯，终于不用再搬来搬去瞎折腾了。打造了自己的工作室，为了看 NBA 和打 2K 买了大电视，出去浪也开始买冰箱贴，在外面吃饭的频率降低了不少，甚至如果下班早会主动回家做饭了。嗯，看起来像个顾家的人了。</p>
 <p>4 月份去了澳洲自驾，是今年唯一一次跟媳妇一起出游，也是我去过的第 16 个国家。从悉尼飞到墨尔本，再沿着大洋路开到瓦南布尔，体验了南太平洋的波澜壮阔，调戏了考拉和袋鼠。</p>
@@ -149,13 +149,13 @@
     </entry><entry>
         <title type="html"><![CDATA[聊聊远程工作——我们的团队与工作方式]]></title>
         <author><name>VeryCB</name></author>
-        <link href="http://verycb.me/2016/11/14/remote-work-our-team.html"/>
+        <link href="https://verycb.me/2016/11/14/remote-work-our-team.html"/>
         <published>2016-11-14T00:00:00+08:00</published>
-        <updated>2016-11-23T23:02:47+08:00</updated>
-        <id>http://verycb.me/2016/11/14/remote-work-our-team.html</id>
-        <category scheme="http://verycb.me/tag/remote/" term="remote" label="remote" />
-        <category scheme="http://verycb.me/tag/treation/" term="treation" label="treation" />
-        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
+        <updated>2016-11-24T04:02:47+08:00</updated>
+        <id>https://verycb.me/2016/11/14/remote-work-our-team.html</id>
+        <category scheme="https://verycb.me/tag/remote/" term="remote" label="remote" />
+        <category scheme="https://verycb.me/tag/treation/" term="treation" label="treation" />
+        <content type="html" xml:base="https://verycb.me/" xml:lang="en">
             <![CDATA[ <p>转眼间远程办公已经 4 个多月了，前段时间组织了一次远程工作者聚会，跟大家一起聊了聊。最大的感受是有越来越多的人开始对 remote 感兴趣了，但缺少足够多且有效的渠道和信息让他们了解这种『不同』的工作方式。</p>
 <p>之前我也看过和听过不少关于远程工作的经验分享，比如 37signals 写的<a href="https://book.douban.com/subject/21362627/">《Remote》</a>，Zapier 写的<a href="https://zapier.com/learn/the-ultimate-guide-to-remote-working/">《The Ultimate Guide to Remote Work》</a>等等，有的时候感觉他们的描述『太美好』，好像是为了推广远程工作而故意隐藏了一些阴暗面，有的时候又觉得有些担忧和批评过于严重。于是我打算分享一些我们团队和我自己在远程工作过程中的经历和感受，尽量做到不吹不黑。</p>
 <p>今天就先介绍一下我们团队以及我们的工作方式吧。</p>
@@ -192,13 +192,13 @@
     </entry><entry>
         <title type="html"><![CDATA[Clean Git Branch]]></title>
         <author><name>VeryCB</name></author>
-        <link href="http://verycb.me/2013/10/01/clean-git-branch.html"/>
+        <link href="https://verycb.me/2013/10/01/clean-git-branch.html"/>
         <published>2013-10-01T00:00:00+08:00</published>
-        <updated>2013-10-18T18:59:01+08:00</updated>
-        <id>http://verycb.me/2013/10/01/clean-git-branch.html</id>
-        <category scheme="http://verycb.me/tag/git/" term="git" label="git" />
-        <category scheme="http://verycb.me/tag/python/" term="python" label="python" />
-        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
+        <updated>2013-10-18T23:59:01+08:00</updated>
+        <id>https://verycb.me/2013/10/01/clean-git-branch.html</id>
+        <category scheme="https://verycb.me/tag/git/" term="git" label="git" />
+        <category scheme="https://verycb.me/tag/python/" term="python" label="python" />
+        <content type="html" xml:base="https://verycb.me/" xml:lang="en">
             <![CDATA[ <p>之前一直以一种“笨办法”来删 git 分支，比如要删本地分支，直接</p>
 <div class="highlight"><pre><span></span>git branch -d &lt;branch&gt;
 </pre></div>
@@ -216,15 +216,15 @@
     </entry><entry>
         <title type="html"><![CDATA[Travel To Rome]]></title>
         <author><name>VeryCB</name></author>
-        <link href="http://verycb.me/2012/03/29/travel-to-rome.html"/>
+        <link href="https://verycb.me/2012/03/29/travel-to-rome.html"/>
         <published>2012-03-29T00:00:00+08:00</published>
-        <updated>2013-10-01T14:28:15+08:00</updated>
-        <id>http://verycb.me/2012/03/29/travel-to-rome.html</id>
-        <category scheme="http://verycb.me/tag/travel/" term="travel" label="travel" />
-        <category scheme="http://verycb.me/tag/europe/" term="europe" label="europe" />
-        <category scheme="http://verycb.me/tag/italy/" term="italy" label="italy" />
-        <category scheme="http://verycb.me/tag/rome/" term="rome" label="rome" />
-        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
+        <updated>2013-10-01T19:28:15+08:00</updated>
+        <id>https://verycb.me/2012/03/29/travel-to-rome.html</id>
+        <category scheme="https://verycb.me/tag/travel/" term="travel" label="travel" />
+        <category scheme="https://verycb.me/tag/europe/" term="europe" label="europe" />
+        <category scheme="https://verycb.me/tag/italy/" term="italy" label="italy" />
+        <category scheme="https://verycb.me/tag/rome/" term="rome" label="rome" />
+        <content type="html" xml:base="https://verycb.me/" xml:lang="en">
             <![CDATA[ <p>14日早上，我们从学校坐了四个小时的大巴到伦敦 Stansted 机场，然后又坐了两个半小时飞机，终于抵达此次欧洲大陆行的第一站——罗马。</p>
 <p><img src="http://ww1.sinaimg.cn/large/a0c2e9c9gw1drqfpmmcgzj.jpg" alt=""/></p>
 <p>提前订了“罗马留学生之家”旅馆，在穷游网上声誉很不错，20欧一晚（多人间）包早晚餐。到旅馆的时候已经晚上9点多了，还好提前让掌柜李阿姨帮我们留着饭。第二天早上李阿姨给我们包了包子，这也是我人肉翻墙一年半以来第一次在异国他乡吃到地道的包子，感动啊&hellip;吃完早饭就正式开始我们的行程了。</p>
@@ -245,13 +245,13 @@
     </entry><entry>
         <title type="html"><![CDATA[Quote From &lt;The Curious Case of Benjamin Button&gt;]]></title>
         <author><name>VeryCB</name></author>
-        <link href="http://verycb.me/2010/02/09/quote-from-the-curious-case-of-benjamin-button.html"/>
+        <link href="https://verycb.me/2010/02/09/quote-from-the-curious-case-of-benjamin-button.html"/>
         <published>2010-02-09T00:00:00+08:00</published>
-        <updated>2013-10-01T14:20:57+08:00</updated>
-        <id>http://verycb.me/2010/02/09/quote-from-the-curious-case-of-benjamin-button.html</id>
-        <category scheme="http://verycb.me/tag/quote/" term="quote" label="quote" />
-        <category scheme="http://verycb.me/tag/movie/" term="movie" label="movie" />
-        <content type="html" xml:base="http://verycb.me/" xml:lang="en">
+        <updated>2013-10-01T19:20:57+08:00</updated>
+        <id>https://verycb.me/2010/02/09/quote-from-the-curious-case-of-benjamin-button.html</id>
+        <category scheme="https://verycb.me/tag/quote/" term="quote" label="quote" />
+        <category scheme="https://verycb.me/tag/movie/" term="movie" label="movie" />
+        <content type="html" xml:base="https://verycb.me/" xml:lang="en">
             <![CDATA[ <blockquote>
 <p>For what it’s worth: it’s never too late or, in my case, too early to be whoever you want to be. There’s no time limit, stop whenever you want. You can change or stay the same, there are no rules to this thing. We can make the best or the worst of it. I hope you make the best of it. And I hope you see things that startle you. I hope you feel things you never felt before. I hope you meet people with a different point of view. I hope you live a life you’re proud of. If you find that you’re not, I hope you have the strength to start all over again.</p>
 </blockquote>
