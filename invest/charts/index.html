@@ -14,7 +14,7 @@
       .tradingview-widget-container .section {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        grid-template-rows: repeat(4, 200px);
+        grid-template-rows: repeat(4, 180px);
       }
       .tradingview-widget-container .right {
         grid-auto-flow: column;
@@ -26,11 +26,22 @@
       #tradingview_eco {
         grid-row: span 2;
       }
+      @media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+        .tradingview-widget-container .left {
+          grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+          grid-template-rows: repeat(4, 360px);
+        }
+        .tradingview-widget-container .right {
+          grid-auto-flow: row;
+          grid-template-columns: minmax(480px, 1fr);
+          grid-template-rows: repeat(4, 360px);
+        }
+      }
     </style>
   </head>
   <body>
     <div class="tradingview-widget-container">
-      <div class="section">
+      <div class="section left">
         <div id="tradingview_bitcoin" class="full-chart"></div>
         <div id="tradingview_ht" class="full-chart"></div>
       </div>
