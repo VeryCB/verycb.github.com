@@ -8,205 +8,168 @@
         background-color: #131722;
       }
       .tradingview-widget-container {
-        height: 800px;
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
       }
-      #tradingview_bitcoin {
-        grid-column-start: 1;
-        grid-column-end: 7;
-        grid-row-start: 1;
-        grid-row-end: 3;
+      .tradingview-widget-container .section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-rows: repeat(4, 200px);
       }
-      #tradingview_ht {
-        grid-column-start: 1;
-        grid-column-end: 7;
-        grid-row-start: 3;
-        grid-row-end: 5;
+      .tradingview-widget-container .right {
+        grid-auto-flow: column;
       }
-      #tradingview_sse {
-        grid-column-start: 7;
-        grid-column-end: 10;
-        grid-row-start: 1;
-        grid-row-end: 2;
-      }
-      #tradingview_hsi {
-        grid-column-start: 7;
-        grid-column-end: 10;
-        grid-row-start: 2;
-        grid-row-end: 3;
-      }
-      #tradingview_dji {
-        grid-column-start: 7;
-        grid-column-end: 10;
-        grid-row-start: 3;
-        grid-row-end: 4;
-      }
-      #tradingview_spx {
-        grid-column-start: 7;
-        grid-column-end: 10;
-        grid-row-start: 4;
-        grid-row-end: 5;
-      }
-      #tradingview_usdcny {
-        grid-column-start: 10;
-        grid-column-end: 13;
-        grid-row-start: 1;
-        grid-row-end: 2;
-      }
-      #tradingview_nzdcny {
-        grid-column-start: 10;
-        grid-column-end: 13;
-        grid-row-start: 2;
-        grid-row-end: 3;
+      .tradingview-widget-container .full-chart {
+        grid-column: span 2;
+        grid-row: span 2;
       }
       #tradingview_eco {
-        grid-column-start: 10;
-        grid-column-end: 13;
-        grid-row-start: 3;
-        grid-row-end: 5;
+        grid-row: span 2;
       }
     </style>
   </head>
   <body>
     <div class="tradingview-widget-container">
-      <div id="tradingview_bitcoin"></div>
-      <div id="tradingview_ht"></div>
-      <div id="tradingview_sse">
-        <script
-          type="text/javascript"
-          src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-          async
-        >
-            {
-            "symbol": "SSE:000001",
-            "width": "100%",
-            "height": "100%",
-            "locale": "en",
-            "dateRange": "12m",
-            "colorTheme": "dark",
-            "trendLineColor": "#37a6ef",
-            "underLineColor": "rgba(55, 166, 239, 0.15)",
-            "isTransparent": false,
-            "autosize": true,
-            "largeChartUrl": ""
-          }
-        </script>
+      <div class="section">
+        <div id="tradingview_bitcoin" class="full-chart"></div>
+        <div id="tradingview_ht" class="full-chart"></div>
       </div>
-      <div id="tradingview_hsi">
-        <script
-          type="text/javascript"
-          src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-          async
-        >
-            {
-            "symbol": "INDEX:HSI",
-            "width": "100%",
-            "height": "100%",
-            "locale": "en",
-            "dateRange": "12m",
-            "colorTheme": "dark",
-            "trendLineColor": "#37a6ef",
-            "underLineColor": "rgba(55, 166, 239, 0.15)",
-            "isTransparent": false,
-            "autosize": true,
-            "largeChartUrl": ""
-          }
-        </script>
-      </div>
+      <div class="section right">
+        <div id="tradingview_sse">
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+            async
+          >
+              {
+              "symbol": "SSE:000001",
+              "width": "100%",
+              "height": "100%",
+              "locale": "en",
+              "dateRange": "12m",
+              "colorTheme": "dark",
+              "trendLineColor": "#37a6ef",
+              "underLineColor": "rgba(55, 166, 239, 0.15)",
+              "isTransparent": false,
+              "autosize": true,
+              "largeChartUrl": ""
+            }
+          </script>
+        </div>
+        <div id="tradingview_hsi">
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+            async
+          >
+              {
+              "symbol": "INDEX:HSI",
+              "width": "100%",
+              "height": "100%",
+              "locale": "en",
+              "dateRange": "12m",
+              "colorTheme": "dark",
+              "trendLineColor": "#37a6ef",
+              "underLineColor": "rgba(55, 166, 239, 0.15)",
+              "isTransparent": false,
+              "autosize": true,
+              "largeChartUrl": ""
+            }
+          </script>
+        </div>
 
-      <div id="tradingview_spx">
-        <script
-          type="text/javascript"
-          src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-          async
-        >
-            {
-            "symbol": "SP:SPX",
-            "width": "100%",
-            "height": "100%",
-            "locale": "en",
-            "dateRange": "12m",
-            "colorTheme": "dark",
-            "trendLineColor": "#37a6ef",
-            "underLineColor": "rgba(55, 166, 239, 0.15)",
-            "isTransparent": false,
-            "autosize": true,
-            "largeChartUrl": ""
-          }
-        </script>
-      </div>
-      <div id="tradingview_dji">
-        <script
-          type="text/javascript"
-          src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
-          async
-        >
-            {
-            "symbol": "DJ:DJI",
-            "width": "100%",
-            "height": "100%",
-            "locale": "en",
-            "dateRange": "12m",
-            "colorTheme": "dark",
-            "trendLineColor": "#37a6ef",
-            "underLineColor": "rgba(55, 166, 239, 0.15)",
-            "isTransparent": false,
-            "autosize": true,
-            "largeChartUrl": ""
-          }
-        </script>
-      </div>
+        <div id="tradingview_spx">
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+            async
+          >
+              {
+              "symbol": "SP:SPX",
+              "width": "100%",
+              "height": "100%",
+              "locale": "en",
+              "dateRange": "12m",
+              "colorTheme": "dark",
+              "trendLineColor": "#37a6ef",
+              "underLineColor": "rgba(55, 166, 239, 0.15)",
+              "isTransparent": false,
+              "autosize": true,
+              "largeChartUrl": ""
+            }
+          </script>
+        </div>
+        <div id="tradingview_dji">
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+            async
+          >
+              {
+              "symbol": "DJ:DJI",
+              "width": "100%",
+              "height": "100%",
+              "locale": "en",
+              "dateRange": "12m",
+              "colorTheme": "dark",
+              "trendLineColor": "#37a6ef",
+              "underLineColor": "rgba(55, 166, 239, 0.15)",
+              "isTransparent": false,
+              "autosize": true,
+              "largeChartUrl": ""
+            }
+          </script>
+        </div>
 
-      <div id="tradingview_usdcny">
-        <script
-          type="text/javascript"
-          src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
-          async
-        >
-            {
-            "symbol": "FX_IDC:USDCNY",
-            "width": "100%",
-            "locale": "en",
-            "colorTheme": "dark",
-            "isTransparent": false
-          }
-        </script>
-      </div>
+        <div id="tradingview_usdcny">
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async
+          >
+              {
+              "symbol": "FX_IDC:USDCNY",
+              "width": "100%",
+              "locale": "en",
+              "colorTheme": "dark",
+              "isTransparent": false
+            }
+          </script>
+        </div>
 
-      <div id="tradingview_nzdcny">
-        <script
-          type="text/javascript"
-          src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
-          async
-        >
-            {
-            "symbol": "FX_IDC:NZDCNY",
-            "width": "100%",
-            "locale": "en",
-            "colorTheme": "dark",
-            "isTransparent": false
-          }
-        </script>
-      </div>
+        <div id="tradingview_nzdcny">
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async
+          >
+              {
+              "symbol": "FX_IDC:NZDCNY",
+              "width": "100%",
+              "locale": "en",
+              "colorTheme": "dark",
+              "isTransparent": false
+            }
+          </script>
+        </div>
 
-      <div id="tradingview_eco">
-        <script
-          type="text/javascript"
-          src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
-          async
-        >
-            {
-            "colorTheme": "dark",
-            "isTransparent": false,
-            "width": "100%",
-            "height": "100%",
-            "locale": "zh_CN",
-            "importanceFilter": "0,1",
-            "currencyFilter": "CNY,NZD"
-          }
-        </script>
+        <div id="tradingview_eco">
+          <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
+            async
+          >
+              {
+              "colorTheme": "dark",
+              "isTransparent": false,
+              "width": "100%",
+              "height": "100%",
+              "locale": "zh_CN",
+              "importanceFilter": "0,1",
+              "currencyFilter": "CNY,NZD"
+            }
+          </script>
+        </div>
       </div>
     </div>
 
