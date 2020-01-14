@@ -26,7 +26,8 @@
       #tradingview_eco {
         grid-row: span 2;
       }
-      @media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+      @media only screen and (max-device-width: 480px),
+        only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
         .tradingview-widget-container .left {
           grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
           grid-template-rows: repeat(4, 360px);
@@ -220,6 +221,30 @@
         save_image: false,
         container_id: 'tradingview_ht',
       });
+    </script>
+    <script type="text/javascript">
+      var httpGetAsync = function(url, callback) {
+        {
+          var xmlHttp = new XMLHttpRequest();
+          xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+              callback(JSON.parse(xmlHttp.responseText));
+          };
+          xmlHttp.open('GET', url, true); // true for asynchronous
+          xmlHttp.send(null);
+        }
+      };
+
+      var url = 'https://blockchain.info/ticker?cors=true';
+
+      var handleData = function(data) {
+        var title = '$' + data['USD']['last'] + ' - BTC/USD';
+        document.title = title;
+      };
+
+      setInterval(function() {
+        httpGetAsync(url, handleData);
+      }, 60000); // run every minute
     </script>
   </body>
 </html>
