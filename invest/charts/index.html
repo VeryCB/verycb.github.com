@@ -22,14 +22,33 @@
             .tradingview-widget-container .section {
                 flex: 1;
                 display: grid;
-                /* 宽屏并排两个图表，窄屏自动堆叠成上下两行 */
-                grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
+                grid-template-columns: 1fr;
                 grid-auto-rows: 1fr;
                 min-height: 0;
             }
             .tradingview-widget-container .full-chart {
                 min-width: 0;
                 min-height: 0;
+            }
+            @media (min-width: 1000px) {
+                /* 中等宽度：上排两张并排，ETH/BTC 占满第二行 */
+                .tradingview-widget-container .section {
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: repeat(2, 1fr);
+                }
+                .tradingview-widget-container .full-chart:nth-child(3) {
+                    grid-column: span 2;
+                }
+            }
+            @media (min-width: 1800px) {
+                /* 超宽屏：三张并排，各占满整列高度 */
+                .tradingview-widget-container .section {
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-rows: 1fr;
+                }
+                .tradingview-widget-container .full-chart:nth-child(3) {
+                    grid-column: auto;
+                }
             }
         </style>
     </head>
@@ -38,6 +57,7 @@
             <div class="section">
                 <div id="tradingview_btc" class="full-chart"></div>
                 <div id="tradingview_eth" class="full-chart"></div>
+                <div id="tradingview_ethbtc" class="full-chart"></div>
             </div>
         </div>
 
@@ -76,6 +96,22 @@
                 allow_symbol_change: true,
                 save_image: false,
                 container_id: "tradingview_eth",
+            });
+
+            new TradingView.widget({
+                autosize: true,
+                symbol: "BINANCE:ETHBTC",
+                interval: "15",
+                timezone: "Pacific/Auckland",
+                theme: "Dark",
+                style: "1",
+                locale: "en",
+                toolbar_bg: "#f1f3f6",
+                enable_publishing: false,
+                hide_top_toolbar: true,
+                allow_symbol_change: true,
+                save_image: false,
+                container_id: "tradingview_ethbtc",
             });
         </script>
         <script type="text/javascript">
