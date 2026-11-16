@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="dark" />
         <title>My Charts</title>
         <style>
             html,
@@ -13,10 +14,86 @@
             }
             body {
                 background-color: #131722;
+                color: #d1d4dc;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                    Roboto, Helvetica, Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
             }
+
+            /* ---------- 资金费率状态栏 ---------- */
+            #funding-bar {
+                flex: none;
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                height: 48px;
+                padding: 0 14px;
+                box-sizing: border-box;
+                border-bottom: 1px solid #2a2e39;
+                font-size: 12px;
+                white-space: nowrap;
+                font-variant-numeric: tabular-nums;
+                overflow: hidden;
+            }
+            .fr-block {
+                display: flex;
+                align-items: baseline;
+                gap: 6px;
+                flex: none;
+            }
+            .fr-label {
+                color: #787b86;
+            }
+            #fr-rate {
+                font-size: 15px;
+                font-weight: 600;
+                color: #d1d4dc;
+            }
+            #fr-rate.pos {
+                color: #26a69a;
+            }
+            #fr-rate.neg {
+                color: #ef5350;
+            }
+            #fr-annual {
+                color: #787b86;
+            }
+            #fr-countdown {
+                font-weight: 600;
+                color: #d1d4dc;
+            }
+            #fr-countdown.soon {
+                color: #f0b90b;
+            }
+            #fr-mark {
+                font-weight: 600;
+            }
+            #fr-history {
+                flex: 1 1 auto;
+                min-width: 0;
+                max-width: 420px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+            }
+            #fr-history svg {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+            #fr-source {
+                margin-left: auto;
+                color: #5d606b;
+            }
+            #fr-source::before {
+                content: "数据源 ";
+            }
+
+            /* ---------- 图表 ---------- */
             .tradingview-widget-container {
-                height: 100vh;
-                height: 100dvh;
+                flex: 1 1 auto;
+                min-height: 0;
                 display: flex;
             }
             .tradingview-widget-container .section {
@@ -50,9 +127,42 @@
                     grid-column: auto;
                 }
             }
+
+            /* 窄屏：隐藏费率历史小图、标记价和年化，保留核心信息 */
+            @media (max-width: 720px) {
+                #funding-bar {
+                    gap: 14px;
+                    font-size: 11px;
+                }
+                #fr-history,
+                #fr-annual,
+                #fr-mark,
+                .fr-mark-block,
+                #fr-source {
+                    display: none;
+                }
+            }
         </style>
     </head>
     <body>
+        <div id="funding-bar">
+            <div class="fr-block">
+                <span class="fr-label">BTC 资金费率</span>
+                <span id="fr-rate">--</span>
+                <span id="fr-annual"></span>
+            </div>
+            <div class="fr-block">
+                <span class="fr-label">距结算</span>
+                <span id="fr-countdown">--:--:--</span>
+            </div>
+            <div id="fr-history"></div>
+            <div class="fr-block fr-mark-block">
+                <span class="fr-label">标记价</span>
+                <span id="fr-mark">--</span>
+            </div>
+            <div id="fr-source">--</div>
+        </div>
+
         <div class="tradingview-widget-container">
             <div class="section">
                 <div id="tradingview_btc" class="full-chart"></div>
@@ -66,9 +176,8 @@
             src="https://s3.tradingview.com/tv.js"
         ></script>
         <script type="text/javascript">
-            new TradingView.widget({
+            var CHART_CONFIG = {
                 autosize: true,
-                symbol: "BINANCE:BTCUSDT",
                 interval: "15",
                 timezone: "Pacific/Auckland",
                 theme: "Dark",
@@ -79,64 +188,369 @@
                 hide_top_toolbar: true,
                 allow_symbol_change: true,
                 save_image: false,
-                container_id: "tradingview_btc",
-            });
+            };
 
-            new TradingView.widget({
-                autosize: true,
-                symbol: "BINANCE:ETHUSDT",
-                interval: "15",
-                timezone: "Pacific/Auckland",
-                theme: "Dark",
-                style: "1",
-                locale: "en",
-                toolbar_bg: "#f1f3f6",
-                enable_publishing: false,
-                hide_top_toolbar: true,
-                allow_symbol_change: true,
-                save_image: false,
-                container_id: "tradingview_eth",
-            });
-
-            new TradingView.widget({
-                autosize: true,
-                symbol: "BINANCE:ETHBTC",
-                interval: "15",
-                timezone: "Pacific/Auckland",
-                theme: "Dark",
-                style: "1",
-                locale: "en",
-                toolbar_bg: "#f1f3f6",
-                enable_publishing: false,
-                hide_top_toolbar: true,
-                allow_symbol_change: true,
-                save_image: false,
-                container_id: "tradingview_ethbtc",
+            [
+                ["tradingview_btc", "BINANCE:BTCUSDT"],
+                ["tradingview_eth", "BINANCE:ETHUSDT"],
+                ["tradingview_ethbtc", "BINANCE:ETHBTC"],
+            ].forEach(function (item) {
+                new TradingView.widget(
+                    Object.assign({}, CHART_CONFIG, {
+                        symbol: item[1],
+                        container_id: item[0],
+                    })
+                );
             });
         </script>
+
         <script type="text/javascript">
-            var httpGetAsync = function (url, callback) {
-                {
-                    var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.onreadystatechange = function () {
-                        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-                            callback(JSON.parse(xmlHttp.responseText));
-                    };
-                    xmlHttp.open("GET", url, true); // true for asynchronous
-                    xmlHttp.send(null);
+            (function () {
+                var $ = function (id) {
+                    return document.getElementById(id);
+                };
+
+                var DEFAULT_INTERVAL_HOURS = 8; // BTCUSDT 永续默认 8 小时结算一次
+                var state = {
+                    rate: null,
+                    next: null,
+                    mark: null,
+                    intervalHours: DEFAULT_INTERVAL_HOURS,
+                    source: null,
+                    history: [],
+                    fetching: false,
+                    lastSettleHandled: 0,
+                };
+
+                // 各交易所的实时资金费率接口（按顺序降级）
+                var SOURCES = [
+                    {
+                        name: "Binance",
+                        url: "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=BTCUSDT",
+                        parse: function (d) {
+                            return {
+                                rate: Number(d.lastFundingRate),
+                                next: Number(d.nextFundingTime),
+                                mark: Number(d.markPrice),
+                            };
+                        },
+                    },
+                    {
+                        name: "Bybit",
+                        url: "https://api.bybit.com/v5/market/tickers?category=linear&symbol=BTCUSDT",
+                        parse: function (d) {
+                            var t = d.result.list[0];
+                            return {
+                                rate: Number(t.fundingRate),
+                                next: Number(t.nextFundingTime),
+                                mark: Number(t.markPrice),
+                            };
+                        },
+                    },
+                    {
+                        name: "OKX",
+                        url: "https://www.okx.com/api/v5/public/funding-rate?instId=BTC-USDT-SWAP",
+                        parse: function (d) {
+                            var t = d.data[0];
+                            return {
+                                rate: Number(t.fundingRate),
+                                next: Number(t.fundingTime),
+                                mark: null,
+                            };
+                        },
+                    },
+                ];
+
+                function pad(n) {
+                    return String(n).padStart(2, "0");
                 }
-            };
 
-            var url = "https://blockchain.info/ticker?cors=true";
+                // 费率（小数）→ 百分比字符串，自动选择小数位
+                function formatRate(rate) {
+                    var pct = rate * 100;
+                    var abs = Math.abs(pct);
+                    var digits = abs >= 1 ? 2 : abs >= 0.01 ? 4 : 5;
+                    var text = pct.toFixed(digits) + "%";
+                    return pct > 0 ? "+" + text : text;
+                }
 
-            var handleData = function (data) {
-                var title = "$" + data["USD"]["last"] + " - BTC/USD";
-                document.title = title;
-            };
+                function formatPrice(price) {
+                    return price.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                    });
+                }
 
-            setInterval(function () {
-                httpGetAsync(url, handleData);
-            }, 60000); // run every minute
+                function formatDuration(ms) {
+                    var total = Math.max(0, Math.floor(ms / 1000));
+                    var h = Math.floor(total / 3600);
+                    var m = Math.floor((total % 3600) / 60);
+                    var s = total % 60;
+                    return pad(h) + ":" + pad(m) + ":" + pad(s);
+                }
+
+                function formatTime(ts) {
+                    var d = new Date(ts);
+                    return (
+                        d.getMonth() +
+                        1 +
+                        "/" +
+                        d.getDate() +
+                        " " +
+                        pad(d.getHours()) +
+                        ":" +
+                        pad(d.getMinutes())
+                    );
+                }
+
+                function renderCurrent() {
+                    var rateEl = $("fr-rate");
+                    if (state.rate === null) {
+                        rateEl.textContent = "--";
+                        rateEl.className = "";
+                        $("fr-annual").textContent = "";
+                        $("fr-mark").textContent = "--";
+                        return;
+                    }
+
+                    rateEl.textContent = formatRate(state.rate);
+                    rateEl.className =
+                        state.rate > 0 ? "pos" : state.rate < 0 ? "neg" : "";
+
+                    var annual =
+                        state.rate *
+                        (24 / state.intervalHours) *
+                        365 *
+                        100;
+                    $("fr-annual").textContent =
+                        "(" +
+                        state.intervalHours +
+                        "h) 年化 " +
+                        (annual > 0 ? "+" : "") +
+                        annual.toFixed(2) +
+                        "%";
+
+                    $("fr-mark").textContent =
+                        state.mark === null || !isFinite(state.mark)
+                            ? "--"
+                            : "$" + formatPrice(state.mark);
+                    $("fr-source").textContent = state.source || "--";
+                }
+
+                function renderHistory(list) {
+                    var box = $("fr-history");
+                    if (!list || !list.length) {
+                        box.innerHTML = "";
+                        return;
+                    }
+
+                    var W = list.length * 8 - 2;
+                    var H = 30;
+                    var mid = H / 2;
+                    var maxAbs = 1e-9;
+                    list.forEach(function (item) {
+                        maxAbs = Math.max(maxAbs, Math.abs(item.rate));
+                    });
+
+                    var bars = list
+                        .map(function (item, i) {
+                            var h = Math.max(
+                                1,
+                                (Math.abs(item.rate) / maxAbs) * (mid - 2)
+                            );
+                            var y = item.rate >= 0 ? mid - h : mid;
+                            var color =
+                                item.rate >= 0 ? "#26a69a" : "#ef5350";
+                            var tip =
+                                formatTime(item.time) +
+                                "  " +
+                                formatRate(item.rate);
+                            return (
+                                '<rect x="' +
+                                i * 8 +
+                                '" y="' +
+                                y.toFixed(2) +
+                                '" width="6" height="' +
+                                h.toFixed(2) +
+                                '" fill="' +
+                                color +
+                                '" opacity="0.85"><title>' +
+                                tip +
+                                "</title></rect>"
+                            );
+                        })
+                        .join("");
+
+                    box.innerHTML =
+                        '<svg viewBox="0 0 ' +
+                        W +
+                        " " +
+                        H +
+                        '" preserveAspectRatio="none" role="img" aria-label="最近 ' +
+                        list.length +
+                        ' 次资金费率">' +
+                        '<line x1="0" y1="' +
+                        mid +
+                        '" x2="' +
+                        W +
+                        '" y2="' +
+                        mid +
+                        '" stroke="#2a2e39" stroke-width="1"/>' +
+                        bars +
+                        "</svg>";
+                }
+
+                function updateTitle() {
+                    var parts = [];
+                    if (state.mark && isFinite(state.mark)) {
+                        parts.push("$" + formatPrice(state.mark));
+                    }
+                    if (state.rate !== null) {
+                        parts.push("FR " + formatRate(state.rate));
+                    }
+                    if (parts.length) {
+                        document.title = parts.join(" · ");
+                    }
+                }
+
+                function tick() {
+                    var el = $("fr-countdown");
+                    if (!state.next) return;
+
+                    var remaining = state.next - Date.now();
+                    if (remaining <= 0) {
+                        el.textContent = "结算中…";
+                        el.classList.remove("soon");
+                        // 结算后刷新一次实时费率，稍后再拉历史
+                        if (
+                            Date.now() - state.lastSettleHandled >
+                            2 * 60 * 1000
+                        ) {
+                            state.lastSettleHandled = Date.now();
+                            fetchFunding();
+                            setTimeout(fetchHistory, 30000);
+                        }
+                        return;
+                    }
+
+                    el.textContent = formatDuration(remaining);
+                    el.classList.toggle("soon", remaining <= 5 * 60 * 1000);
+                }
+
+                // 带超时的 fetch，避免接口卡住后阻塞后续刷新
+                function fetchWithTimeout(url, ms) {
+                    var controller = new AbortController();
+                    var timer = setTimeout(function () {
+                        controller.abort();
+                    }, ms);
+                    return fetch(url, {
+                        cache: "no-store",
+                        signal: controller.signal,
+                    }).finally(function () {
+                        clearTimeout(timer);
+                    });
+                }
+
+                function fetchFunding() {
+                    if (state.fetching) return;
+                    state.fetching = true;
+
+                    var index = 0;
+                    function tryNext() {
+                        if (index >= SOURCES.length) {
+                            state.fetching = false;
+                            if (state.rate === null) {
+                                $("fr-rate").textContent = "获取失败";
+                                $("fr-source").textContent = "--";
+                            }
+                            return;
+                        }
+                        var src = SOURCES[index++];
+                        fetchWithTimeout(src.url, 8000)
+                            .then(function (res) {
+                                if (!res.ok) throw new Error(res.status);
+                                return res.json();
+                            })
+                            .then(function (data) {
+                                var parsed = src.parse(data);
+                                if (
+                                    !isFinite(parsed.rate) ||
+                                    !parsed.next
+                                ) {
+                                    throw new Error("bad data");
+                                }
+                                state.rate = parsed.rate;
+                                state.next = parsed.next;
+                                state.mark = parsed.mark;
+                                state.source = src.name;
+                                state.fetching = false;
+                                renderCurrent();
+                                updateTitle();
+                                tick();
+                            })
+                            .catch(tryNext);
+                    }
+                    tryNext();
+                }
+
+                function fetchHistory() {
+                    fetchWithTimeout(
+                        "https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&limit=30",
+                        8000
+                    )
+                        .then(function (res) {
+                            if (!res.ok) throw new Error(res.status);
+                            return res.json();
+                        })
+                        .then(function (data) {
+                            if (!Array.isArray(data) || !data.length) return;
+
+                            state.history = data.map(function (d) {
+                                return {
+                                    time: Number(d.fundingTime),
+                                    rate: Number(d.fundingRate),
+                                };
+                            });
+
+                            // 用最近两次结算的间隔推断结算周期（8h / 4h / 1h）
+                            if (state.history.length > 1) {
+                                var a =
+                                    state.history[state.history.length - 1]
+                                        .time;
+                                var b =
+                                    state.history[state.history.length - 2]
+                                        .time;
+                                var hours = (a - b) / 3600000;
+                                if (hours > 0) {
+                                    state.intervalHours = hours;
+                                    renderCurrent();
+                                }
+                            }
+
+                            renderHistory(state.history);
+                        })
+                        .catch(function () {
+                            // 历史数据拿不到时保留现状，不影响实时费率
+                        });
+                }
+
+                // 初始化
+                renderCurrent();
+                fetchFunding();
+                fetchHistory();
+
+                setInterval(fetchFunding, 60 * 1000); // 实时费率每分钟刷新
+                setInterval(fetchHistory, 5 * 60 * 1000); // 历史费率 5 分钟刷新
+                setInterval(tick, 1000); // 倒计时每秒刷新
+
+                // 切回标签页时立即刷新，避免后台节流导致数据过期
+                document.addEventListener("visibilitychange", function () {
+                    if (document.visibilityState === "visible") {
+                        fetchFunding();
+                        tick();
+                    }
+                });
+            })();
         </script>
     </body>
 </html>
