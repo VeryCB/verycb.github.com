@@ -69,6 +69,29 @@
             #fr-mark {
                 font-weight: 600;
             }
+            #fng-value {
+                font-size: 15px;
+                font-weight: 600;
+                color: #d1d4dc;
+            }
+            #fng-value.extreme-fear {
+                color: #ef5350;
+            }
+            #fng-value.fear {
+                color: #f3a33c;
+            }
+            #fng-value.neutral {
+                color: #f0b90b;
+            }
+            #fng-value.greed {
+                color: #26a69a;
+            }
+            #fng-value.extreme-greed {
+                color: #16c784;
+            }
+            #fng-label {
+                color: #787b86;
+            }
             #fr-history {
                 flex: 1 1 auto;
                 min-width: 0;
@@ -131,13 +154,15 @@
             /* 窄屏：隐藏费率历史小图、标记价和年化，保留核心信息 */
             @media (max-width: 720px) {
                 #funding-bar {
-                    gap: 14px;
+                    height: auto;
+                    min-height: 48px;
+                    flex-wrap: wrap;
+                    padding: 7px 14px;
+                    gap: 6px 14px;
                     font-size: 11px;
                 }
                 #fr-history,
                 #fr-annual,
-                #fr-mark,
-                .fr-mark-block,
                 #fr-source {
                     display: none;
                 }
@@ -154,6 +179,11 @@
             <div class="fr-block">
                 <span class="fr-label">距结算</span>
                 <span id="fr-countdown">--:--:--</span>
+            </div>
+            <div class="fr-block" id="fng-block">
+                <span class="fr-label">恐慌贪婪</span>
+                <span id="fng-value">--</span>
+                <span id="fng-label"></span>
             </div>
             <div id="fr-history"></div>
             <div class="fr-block fr-mark-block">
@@ -218,6 +248,7 @@
                     intervalHours: DEFAULT_INTERVAL_HOURS,
                     source: null,
                     history: [],
+                    fng: null,
                     fetching: false,
                     lastSettleHandled: 0,
                 };
@@ -408,9 +439,91 @@
                     if (state.rate !== null) {
                         parts.push("FR " + formatRate(state.rate));
                     }
+                    if (state.fng) {
+                        parts.push("F&G " + state.fng.value);
+                    }
                     if (parts.length) {
                         document.title = parts.join(" · ");
                     }
+                }
+
+                var FNG_STYLES = {
+                    "Extreme Fear": { cls: "extreme-fear", text: "极度恐慌" },
+                    Fear: { cls: "fear", text: "恐慌" },
+                    Neutral: { cls: "neutral", text: "中性" },
+                    Greed: { cls: "greed", text: "贪婪" },
+                    "Extreme Greed": {
+                        cls: "extreme-greed",
+                        text: "极度贪婪",
+                    },
+                };
+
+                function renderFearGreed() {
+                    var valueEl = $("fng-value");
+                    var fng = state.fng;
+                    if (!fng) {
+                        valueEl.textContent = "--";
+                        valueEl.className = "";
+                        $("fng-label").textContent = "";
+                        return;
+                    }
+
+                    var style = FNG_STYLES[fng.classification] || {
+                        cls: "neutral",
+                        text: fng.classification || "",
+                    };
+                    valueEl.textContent = fng.value;
+                    valueEl.className = style.cls;
+                    $("fng-label").textContent = style.text;
+
+                    var tips = [];
+                    if (fng.yesterday !== null) {
+                        tips.push("昨日 " + fng.yesterday);
+                    }
+                    if (fng.week !== null) {
+                        tips.push("上周 " + fng.week);
+                    }
+                    if (fng.month !== null) {
+                        tips.push("上月 " + fng.month);
+                    }
+                    $("fng-block").title = tips.join(" · ");
+                }
+
+                // 恐慌与贪婪指数（alternative.me，每日更新）
+                function fetchFearGreed() {
+                    fetchWithTimeout(
+                        "https://api.alternative.me/fng/?limit=31&format=json",
+                        8000
+                    )
+                        .then(function (res) {
+                            if (!res.ok) throw new Error(res.status);
+                            return res.json();
+                        })
+                        .then(function (data) {
+                            var list = (data && data.data) || [];
+                            if (!list.length) return;
+
+                            var pick = function (i) {
+                                return list[i] ? Number(list[i].value) : null;
+                            };
+                            var today = list[0];
+                            state.fng = {
+                                value: Number(today.value),
+                                classification: today.value_classification,
+                                yesterday: pick(1),
+                                week: pick(7),
+                                month: pick(30),
+                            };
+                            if (!isFinite(state.fng.value)) {
+                                state.fng = null;
+                                return;
+                            }
+                            renderFearGreed();
+                            updateTitle();
+                        })
+                        .catch(function () {
+                            // 拿不到指数时保留现状，不影响其他信息
+                        });
                 }
 
                 function tick() {
@@ -536,17 +649,21 @@
 
                 // 初始化
                 renderCurrent();
+                renderFearGreed();
                 fetchFunding();
                 fetchHistory();
+                fetchFearGreed();
 
                 setInterval(fetchFunding, 60 * 1000); // 实时费率每分钟刷新
                 setInterval(fetchHistory, 5 * 60 * 1000); // 历史费率 5 分钟刷新
+                setInterval(fetchFearGreed, 15 * 60 * 1000); // 恐慌贪婪指数 15 分钟刷新
                 setInterval(tick, 1000); // 倒计时每秒刷新
 
                 // 切回标签页时立即刷新，避免后台节流导致数据过期
                 document.addEventListener("visibilitychange", function () {
                     if (document.visibilityState === "visible") {
                         fetchFunding();
+                        fetchFearGreed();
                         tick();
                     }
                 });
