@@ -130,24 +130,24 @@
                 min-width: 0;
                 min-height: 0;
             }
-            .tradingview-widget-container .full-chart > iframe {
-                width: 100%;
-                height: 100%;
-                border: 0;
-                display: block;
-            }
             @media (min-width: 1000px) {
-                /* 常规桌面：2×2 网格排布四张图 */
+                /* 中等宽度：上排两张并排，ETH/BTC 占满第二行 */
                 .tradingview-widget-container .section {
                     grid-template-columns: repeat(2, 1fr);
                     grid-template-rows: repeat(2, 1fr);
                 }
+                .tradingview-widget-container .full-chart:nth-child(3) {
+                    grid-column: span 2;
+                }
             }
-            @media (min-width: 2200px) {
-                /* 超宽屏：四张并排，各占满整列高度 */
+            @media (min-width: 1800px) {
+                /* 超宽屏：三张并排，各占满整列高度 */
                 .tradingview-widget-container .section {
-                    grid-template-columns: repeat(4, 1fr);
+                    grid-template-columns: repeat(3, 1fr);
                     grid-template-rows: 1fr;
+                }
+                .tradingview-widget-container .full-chart:nth-child(3) {
+                    grid-column: auto;
                 }
             }
 
@@ -198,15 +198,6 @@
                 <div id="tradingview_btc" class="full-chart"></div>
                 <div id="tradingview_eth" class="full-chart"></div>
                 <div id="tradingview_ethbtc" class="full-chart"></div>
-                <!-- Tacit Token (TAC, 0xa131...8279) 仅在以太坊 DEX 交易且未被 TradingView 收录，使用 GeckoTerminal 嵌入主力池图表 -->
-                <div id="chart_tac" class="full-chart">
-                    <iframe
-                        title="TAC / SPX (Tacit Token)"
-                        src="https://www.geckoterminal.com/eth/pools/0x213bc9633cb834926ae1728bf427b1c69ca9bc4c?embed=1&amp;info=0&amp;swaps=0&amp;grayscale=0&amp;light_chart=0&amp;chart_type=price&amp;resolution=15m"
-                        allow="clipboard-write"
-                        allowfullscreen
-                    ></iframe>
-                </div>
             </div>
         </div>
 
